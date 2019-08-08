@@ -1,0 +1,30 @@
+﻿namespace Penguin.Persistence.Abstractions.Attributes.Validation
+{
+    /// <summary>
+    /// Defines a maximum string length for a property
+    /// </summary>
+    public class StringLengthAttribute : PersistenceAttribute
+    {
+        #region Properties
+
+        /// <summary>
+        /// The maximum string length for the property
+        /// </summary>
+        public int Length { get; set; }
+
+        #endregion Properties
+
+        #region Constructors
+
+        /// <summary>
+        /// Constructs a new instance of this attribute
+        /// </summary>
+        /// <param name="length">The maximum string length for the property</param>
+        public StringLengthAttribute(int length)
+        {
+            Length = length;
+        }
+
+        #endregion Constructors
+    }
+}
