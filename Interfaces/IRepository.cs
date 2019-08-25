@@ -97,6 +97,12 @@ namespace Penguin.Persistence.Abstractions.Interfaces
         /// <returns> a new write context for the underlying persistence context</returns>
         IWriteContext WriteContext();
 
+        /// <summary>
+        /// Should return every object from the repository
+        /// </summary>
+        /// <returns>Every object from the repository</returns>
+        List<object> Get();
+
         #endregion Methods
     }
     /// <summary>

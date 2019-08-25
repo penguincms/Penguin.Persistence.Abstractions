@@ -810,6 +810,12 @@
             </summary>
             <returns> a new write context for the underlying persistence context</returns>
         </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepository.Get">
+            <summary>
+            Should return every object from the repository
+            </summary>
+            <returns>Every object from the repository</returns>
+        </member>
         <member name="T:Penguin.Persistence.Abstractions.Interfaces.IRepositoryI`1">
             <summary>
             An interface intended to allow for access to a persistence context of a given type
