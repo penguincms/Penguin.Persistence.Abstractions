@@ -12,8 +12,6 @@ namespace Penguin.Persistence.Abstractions.Interfaces
     /// <typeparam name="T">The type of data used in the persistence context</typeparam>
     public interface IRepository<T> : IRepositoryI<T>, IRepositoryO<T>, IRepository, IQueryable<T> where T : class
     {
-        #region Properties
-
         /// <summary>
         /// The persistence context containing the data this repository accesses
         /// </summary>
@@ -23,8 +21,6 @@ namespace Penguin.Persistence.Abstractions.Interfaces
         /// An accessor for only derived types
         /// </summary>
         IQueryable<TDerived> OfType<TDerived>() where TDerived : T;
-
-        #endregion Properties
     }
 
     /// <summary>
@@ -32,21 +28,17 @@ namespace Penguin.Persistence.Abstractions.Interfaces
     /// </summary>
     public interface IRepository
     {
-        #region Properties
         /// <summary>
         /// Returns the (possibly) overridden IQueriable used to access database by the underlying persistence context
         /// </summary>
         IQueryable All { get; }
 
         /// <summary>
-        /// Returns a bool indicating whether or not the underlying persistence context contains a set for storing the 
+        /// Returns a bool indicating whether or not the underlying persistence context contains a set for storing the
         /// type represented by this repository
         /// </summary>
         bool IsValid { get; }
 
-        #endregion Properties
-
-        #region Methods
         /// <summary>
         /// This should add a new object to the underlying data store
         /// </summary>
@@ -78,6 +70,12 @@ namespace Penguin.Persistence.Abstractions.Interfaces
         void Delete(params object[] o);
 
         /// <summary>
+        /// Should return every object from the repository
+        /// </summary>
+        /// <returns>Every object from the repository</returns>
+        List<object> Get();
+
+        /// <summary>
         /// This should update any objects that already exist in the underlying data store
         /// </summary>
         /// <param name="o">The objects to update from the underlying data store</param>
@@ -96,22 +94,14 @@ namespace Penguin.Persistence.Abstractions.Interfaces
         /// </summary>
         /// <returns> a new write context for the underlying persistence context</returns>
         IWriteContext WriteContext();
-
-        /// <summary>
-        /// Should return every object from the repository
-        /// </summary>
-        /// <returns>Every object from the repository</returns>
-        List<object> Get();
-
-        #endregion Methods
     }
+
     /// <summary>
     /// An interface intended to allow for access to a persistence context of a given type
     /// </summary>
     /// <typeparam name="T">The type of data used in the persistence context</typeparam>
     public interface IRepositoryI<in T> : IRepository where T : class
     {
-        #region Methods
         /// <summary>
         /// This should add a new object to the underlying data store
         /// </summary>
@@ -135,22 +125,17 @@ namespace Penguin.Persistence.Abstractions.Interfaces
         /// </summary>
         /// <param name="o">The objects to update from the underlying data store</param>
         void Update(params T[] o);
-
-        #endregion Methods
     }
+
     /// <summary>
     /// An interface intended to allow for access to a persistence context of a given type
     /// </summary>
     /// <typeparam name="T">The type of data used in the persistence context</typeparam>
     public interface IRepositoryO<out T> : IRepository where T : class
     {
-        #region Properties
-
         /// <summary>
         /// Returns the (possibly) overridden IQueriable used to access database by the underlying persistence context
         /// </summary>
         new IQueryable<T> All { get; }
-
-        #endregion Properties
     }
 }

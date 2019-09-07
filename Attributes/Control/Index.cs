@@ -5,16 +5,10 @@
     /// </summary>
     public class IndexAttribute : PersistenceAttribute
     {
-        #region Properties
-
         /// <summary>
         /// True if no duplicate values should be allowed between persisted objects
         /// </summary>
         public bool IsUnique { get; set; }
-
-        #endregion Properties
-
-        #region Constructors
 
         /// <summary>
         /// Constructs a new instance of this attribute
@@ -24,7 +18,5 @@
         {
             IsUnique = isUnique;
         }
-
-        #endregion Constructors
     }
 }

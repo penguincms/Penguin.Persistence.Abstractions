@@ -7,8 +7,6 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
     /// </summary>
     public class HasManyAttribute : RelationalAttribute
     {
-        #region Properties
-
         /// <summary>
         /// The property name that defines the key referenced
         /// </summary>
@@ -18,10 +16,6 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         /// The type of the object that this property (assumed key) references
         /// </summary>
         public Type TargetType { get; set; }
-
-        #endregion Properties
-
-        #region Constructors
 
         /// <summary>
         /// Constructs a new instance of this attribute
@@ -33,7 +27,5 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
             TargetProperty = targetProperty;
             TargetType = targetType;
         }
-
-        #endregion Constructors
     }
 }

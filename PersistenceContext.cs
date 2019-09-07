@@ -15,11 +15,9 @@ namespace Penguin.Persistence.Abstractions
     /// <typeparam name="T">The type of object being specifically referenced to by this instance</typeparam>
     public abstract class PersistenceContext<T> : IPersistenceContext<T> where T : KeyedObject
     {
-        #region Properties
-
         /// <summary>
-        /// This should access the underlying queriable data provider, and be overridden for persistence contexts 
-        /// that require any form of data filtering 
+        /// This should access the underlying queriable data provider, and be overridden for persistence contexts
+        /// that require any form of data filtering
         /// </summary>
         public virtual IQueryable<T> All
         {
@@ -32,11 +30,6 @@ namespace Penguin.Persistence.Abstractions
         }
 
         /// <summary>
-        /// This should return a true if the object used to construct this persistence context has an associated data store (ex DbSet)
-        /// </summary>
-        public abstract bool IsValid { get; }
-
-        /// <summary>
         /// This returns the core type of the underlying IQueriable
         /// </summary>
         public Type ElementType => All.ElementType;
@@ -47,13 +40,14 @@ namespace Penguin.Persistence.Abstractions
         public virtual Expression Expression => All.Expression;
 
         /// <summary>
+        /// This should return a true if the object used to construct this persistence context has an associated data store (ex DbSet)
+        /// </summary>
+        public abstract bool IsValid { get; }
+
+        /// <summary>
         /// This returns the Provider of the underlying IQueriable
         /// </summary>
         public IQueryProvider Provider => All.Provider;
-
-        #endregion Properties
-
-        #region Constructors
 
         /// <summary>
         /// Constructs a new instance of the Persistence Context
@@ -66,10 +60,6 @@ namespace Penguin.Persistence.Abstractions
 
             this.BaseType = t;
         }
-
-        #endregion Constructors
-
-        #region Methods
 
         /// <summary>
         /// This should add a new object to the underlying data store
@@ -125,11 +115,20 @@ namespace Penguin.Persistence.Abstractions
         /// <returns>The Enumerator for the underlying IQueriable</returns>
         public IEnumerator<T> GetEnumerator() => All.GetEnumerator();
 
+        IEnumerator IEnumerable.GetEnumerator() => All.GetEnumerator();
+
         /// <summary>
         /// This should return an array of any IWriteContexts that are currently registered by this persistence context
         /// </summary>
         /// <returns>An array of any IWriteContexts that are currently registered by this persistence context</returns>
         public abstract IWriteContext[] GetWriteContexts();
+
+        /// <summary>
+        /// This should return a list from the data source containing only the derived type with any applicable relations/filters
+        /// </summary>
+        /// <typeparam name="TDerived">A type stored in the context that is derived from the main context type</typeparam>
+        /// <returns>An IQueriable to access this child list of objects</returns>
+        public abstract IQueryable<TDerived> OfType<TDerived>() where TDerived : T;
 
         /// <summary>
         /// This should update any objects that already exist in the underlying data store
@@ -142,17 +141,6 @@ namespace Penguin.Persistence.Abstractions
         /// </summary>
         /// <returns>A new IWriteContext instance that is pre-registered with this persistence context</returns>
         public abstract IWriteContext WriteContext();
-
-        IEnumerator IEnumerable.GetEnumerator() => All.GetEnumerator();
-
-        /// <summary>
-        /// This should return a list from the data source containing only the derived type with any applicable relations/filters
-        /// </summary>
-        /// <typeparam name="TDerived">A type stored in the context that is derived from the main context type</typeparam>
-        /// <returns>An IQueriable to access this child list of objects</returns>
-        public abstract IQueryable<TDerived> OfType<TDerived>() where TDerived : T;
-
-        #endregion Methods
 
         /// <summary>
         /// This should contain any additional sources for objects that are READ ONLY (ex caches)

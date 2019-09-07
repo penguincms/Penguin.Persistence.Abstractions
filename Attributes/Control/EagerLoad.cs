@@ -8,16 +8,10 @@ namespace Penguin.Persistence.Abstractions.Attributes.Control
     /// </summary>
     public class EagerLoad : Attribute
     {
-        #region Properties
-
         /// <summary>
         /// The number of steps to travel down the object graph
         /// </summary>
         public int? Depth { get; set; }
-
-        #endregion Properties
-
-        #region Constructors
 
         /// <summary>
         /// Creates a new instance of this attribute with the specified depth
@@ -35,7 +29,5 @@ namespace Penguin.Persistence.Abstractions.Attributes.Control
         {
             this.Depth = null;
         }
-
-        #endregion Constructors
     }
 }

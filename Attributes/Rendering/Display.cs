@@ -5,8 +5,6 @@
     /// </summary>
     public class DisplayAttribute : PersistenceAttribute
     {
-        #region Properties
-
         /// <summary>
         /// Should fields be created during scaffolding? Unused
         /// </summary>
@@ -27,17 +25,11 @@
         /// </summary>
         public int Order { get; set; }
 
-        #endregion Properties
-
-        #region Constructors
-
         /// <summary>
         /// Creates a new instance of this attribute
         /// </summary>
         public DisplayAttribute()
         {
         }
-
-        #endregion Constructors
     }
 }

@@ -5,8 +5,6 @@
     /// </summary>
     public abstract class RelationalAttribute : PersistenceAttribute
     {
-        #region Methods
-
         /// <summary>
         /// Returns Relations + TypeName. Used by the Dynamic rendering system to allow for routing based on entity relations
         /// </summary>
@@ -15,7 +13,5 @@
         {
             return $"Relations.{this.GetType().Name}";
         }
-
-        #endregion Methods
     }
 }

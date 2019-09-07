@@ -7,7 +7,6 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
     /// </summary>
     public class HasRequiredAttribute : RelationalAttribute
     {
-        #region Properties
         /// <summary>
         /// The property name that defines the key referenced
         /// </summary>
@@ -18,11 +17,8 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         /// </summary>
         public Type TargetType { get; set; }
 
-        #endregion Properties
-
-        #region Constructors
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="targetProperty">The property name that defines the key referenced</param>
         /// <param name="targetType">The type of the object that this property (assumed key) references</param>
@@ -31,7 +27,5 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
             TargetProperty = targetProperty;
             TargetType = targetType;
         }
-
-        #endregion Constructors
     }
 }

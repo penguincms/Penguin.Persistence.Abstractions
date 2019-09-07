@@ -8,8 +8,6 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
     /// </summary>
 	public class ManyToManyAttribute : MappingAttribute
     {
-        #region Constructors
-
         /// <summary>
         /// Creates a new instance of this attribute. All properties are inferred from usage
         /// </summary>
@@ -100,17 +98,11 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
             };
         }
 
-        #endregion Constructors
-
-        #region Methods
-
         /// <summary>
         /// Attempts to resolve the type of the property that links back to this one
         /// </summary>
         /// <param name="LeftPropertyType">The type of this property</param>
         /// <returns>A collection of this type, since this is Many to Many</returns>
         public override Type GetRightPropertyType(Type LeftPropertyType) => typeof(ICollection<>).MakeGenericType(LeftPropertyType);
-
-        #endregion Methods
     }
 }

@@ -5,16 +5,10 @@
     /// </summary>
     public class StringLengthAttribute : PersistenceAttribute
     {
-        #region Properties
-
         /// <summary>
         /// The maximum string length for the property
         /// </summary>
         public int Length { get; set; }
-
-        #endregion Properties
-
-        #region Constructors
 
         /// <summary>
         /// Constructs a new instance of this attribute
@@ -24,7 +18,5 @@
         {
             Length = length;
         }
-
-        #endregion Constructors
     }
 }

@@ -8,7 +8,6 @@ namespace Penguin.Persistence.Abstractions.Models.Complex
     [ComplexType]
     public class Size
     {
-        #region Properties
         /// <summary>
         /// The Height of the object being represented
         /// </summary>
@@ -18,7 +17,5 @@ namespace Penguin.Persistence.Abstractions.Models.Complex
         /// The Width of the object being represented
         /// </summary>
         public int Width { get; set; }
-
-        #endregion Properties
     }
 }

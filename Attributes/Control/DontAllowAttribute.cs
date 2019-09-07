@@ -7,16 +7,10 @@ namespace Penguin.Persistence.Abstractions.Attributes.Control
     /// </summary>
     public sealed class DontAllowAttribute : Attribute
     {
-        #region Properties
-
         /// <summary>
         /// This DisplayContext(s) this attribute specifies
         /// </summary>
         public DisplayContext Context { get; set; }
-
-        #endregion Properties
-
-        #region Constructors
 
         /// <summary>
         /// Creates a new instance of this attribute
@@ -26,7 +20,5 @@ namespace Penguin.Persistence.Abstractions.Attributes.Control
         {
             this.Context = context;
         }
-
-        #endregion Constructors
     }
 }

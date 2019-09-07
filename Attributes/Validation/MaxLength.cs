@@ -5,16 +5,10 @@
     /// </summary>
     public class MaxLengthAttribute : PersistenceAttribute
     {
-        #region Properties
-
         /// <summary>
         /// The max length of the property
         /// </summary>
         public int Length { get; set; }
-
-        #endregion Properties
-
-        #region Constructors
 
         /// <summary>
         /// Constructs a new instance of this attribute
@@ -32,7 +26,5 @@
         {
             Length = int.MaxValue;
         }
-
-        #endregion Constructors
     }
 }

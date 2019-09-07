@@ -7,8 +7,6 @@ namespace Penguin.Persistence.Abstractions.Attributes.Validation
     /// </summary>
     public class RangeAttribute : PersistenceAttribute
     {
-        #region Properties
-
         /// <summary>
         /// Gets the maximum value for the range
         /// </summary>
@@ -23,10 +21,6 @@ namespace Penguin.Persistence.Abstractions.Attributes.Validation
         /// Gets the type of the <see cref="Minimum"/> and <see cref="Maximum"/> values (e.g. Int32, Double, or some custom type)
         /// </summary>
         public Type OperandType { get; private set; }
-
-        #endregion Properties
-
-        #region Constructors
 
         /// <summary>
         /// Constructs an empty instance of this attribute
@@ -74,7 +68,5 @@ namespace Penguin.Persistence.Abstractions.Attributes.Validation
             this.Minimum = minimum;
             this.Maximum = maximum;
         }
-
-        #endregion Constructors
     }
 }

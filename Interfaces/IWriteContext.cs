@@ -8,13 +8,9 @@ namespace Penguin.Persistence.Abstractions.Interfaces
     /// </summary>
     public interface IWriteContext : IDisposable
     {
-        #region Methods
-
         /// <summary>
         /// This should clear out all open object references and close the write contexts without commiting any changes
         /// </summary>
         void CancelWrite();
-
-        #endregion Methods
     }
 }

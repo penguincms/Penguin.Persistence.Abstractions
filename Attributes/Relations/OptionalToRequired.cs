@@ -3,13 +3,11 @@
 namespace Penguin.Persistence.Abstractions.Attributes.Relations
 {
     /// <summary>
-    /// Specifies that the property this applies to is optional, however the property linking back to this must 
+    /// Specifies that the property this applies to is optional, however the property linking back to this must
     /// be set
     /// </summary>
     public class OptionalToRequiredAttribute : MappingAttribute
     {
-        #region Constructors
-
         /// <summary>
         /// Constructs a new instance of this attribute
         /// </summary>
@@ -35,17 +33,11 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
             };
         }
 
-        #endregion Constructors
-
-        #region Methods
-
         /// <summary>
         /// Returns the expected type of the property that links back to this one
         /// </summary>
         /// <param name="LeftPropertyType">The type of the class containing this attribute. Its a one-to-one so it just returns this type</param>
         /// <returns>The type of the class containing this attribute</returns>
         public override Type GetRightPropertyType(Type LeftPropertyType) => LeftPropertyType;
-
-        #endregion Methods
     }
 }

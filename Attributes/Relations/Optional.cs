@@ -7,8 +7,6 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
     /// </summary>
     public class OptionalAttribute : RelationalAttribute
     {
-        #region Properties
-
         /// <summary>
         /// The name of the property linking back to this one
         /// </summary>
@@ -18,10 +16,6 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         /// The type of the property
         /// </summary>
         public Type TargetType { get; set; }
-
-        #endregion Properties
-
-        #region Constructors
 
         /// <summary>
         /// Constructs a new instance of this attribute
@@ -33,7 +27,5 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
             TargetProperty = targetProperty;
             TargetType = targetType;
         }
-
-        #endregion Constructors
     }
 }

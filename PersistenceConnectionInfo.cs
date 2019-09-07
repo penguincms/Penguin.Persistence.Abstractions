@@ -23,8 +23,6 @@ namespace Penguin.Persistence.Abstractions
     /// </summary>
     public class PersistenceConnectionInfo
     {
-        #region Properties
-
         /// <summary>
         /// The Raw connection string used to construct this instance
         /// </summary>
@@ -40,10 +38,6 @@ namespace Penguin.Persistence.Abstractions
         /// </summary>
         public ProviderType ProviderType { get; set; }
 
-        #endregion Properties
-
-        #region Constructors
-
         /// <summary>
         /// Constructs a new instance of this connection information
         /// </summary>
@@ -56,7 +50,5 @@ namespace Penguin.Persistence.Abstractions
 
             ProviderType = connectionString.IndexOf(".sdf", StringComparison.CurrentCultureIgnoreCase) > 0 ? ProviderType.SQLCE : ProviderType.SQL;
         }
-
-        #endregion Constructors
     }
 }

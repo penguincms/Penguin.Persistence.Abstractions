@@ -223,7 +223,6 @@
         </member>
         <member name="M:Penguin.Persistence.Abstractions.Attributes.Relations.HasRequiredAttribute.#ctor(System.String,System.Type)">
             <summary>
-            
             </summary>
             <param name="targetProperty">The property name that defines the key referenced</param>
             <param name="targetType">The type of the object that this property (assumed key) references</param>
@@ -414,8 +413,8 @@
         </member>
         <member name="T:Penguin.Persistence.Abstractions.Attributes.Relations.OptionalToManyAttribute">
             <summary>
-            Specifies that the property this applies to is optional, and the other end of the reference may contain a list of 
-            the class containing this property. 
+            Specifies that the property this applies to is optional, and the other end of the reference may contain a list of
+            the class containing this property.
             </summary>
         </member>
         <member name="M:Penguin.Persistence.Abstractions.Attributes.Relations.OptionalToManyAttribute.#ctor">
@@ -438,7 +437,7 @@
         </member>
         <member name="T:Penguin.Persistence.Abstractions.Attributes.Relations.OptionalToRequiredAttribute">
             <summary>
-            Specifies that the property this applies to is optional, however the property linking back to this must 
+            Specifies that the property this applies to is optional, however the property linking back to this must
             be set
             </summary>
         </member>
@@ -582,7 +581,7 @@
         </member>
         <member name="P:Penguin.Persistence.Abstractions.Attributes.Validation.RangeAttribute.OperandType">
             <summary>
-            Gets the type of the <see cref="P:Penguin.Persistence.Abstractions.Attributes.Validation.RangeAttribute.Minimum"/> and <see cref="P:Penguin.Persistence.Abstractions.Attributes.Validation.RangeAttribute.Maximum"/> values (e.g. Int32, Double, or some custom type)
+            Gets the type of the <see cref="P:Penguin.Persistence.Abstractions.Attributes.Validation.RangeAttribute.Minimum" /> and <see cref="P:Penguin.Persistence.Abstractions.Attributes.Validation.RangeAttribute.Maximum" /> values (e.g. Int32, Double, or some custom type)
             </summary>
         </member>
         <member name="M:Penguin.Persistence.Abstractions.Attributes.Validation.RangeAttribute.#ctor">
@@ -641,13 +640,13 @@
         </member>
         <member name="P:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext`1.All">
             <summary>
-            This should access the underlying queriable data provider, and be overridden for persistence contexts 
-            that require any form of data filtering 
+            This should access the underlying queriable data provider, and be overridden for persistence contexts
+            that require any form of data filtering
             </summary>
         </member>
         <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext`1.OfType``1">
             <summary>
-            This should perform all of the same data filtering and population as All, however it should 
+            This should perform all of the same data filtering and population as All, however it should
             do all of this specific to the derived type and return the derived type as though it was a top
             level persistence context
             </summary>
@@ -756,7 +755,7 @@
         </member>
         <member name="P:Penguin.Persistence.Abstractions.Interfaces.IRepository.IsValid">
             <summary>
-            Returns a bool indicating whether or not the underlying persistence context contains a set for storing the 
+            Returns a bool indicating whether or not the underlying persistence context contains a set for storing the
             type represented by this repository
             </summary>
         </member>
@@ -943,8 +942,8 @@
         </member>
         <member name="P:Penguin.Persistence.Abstractions.PersistenceContext`1.All">
             <summary>
-            This should access the underlying queriable data provider, and be overridden for persistence contexts 
-            that require any form of data filtering 
+            This should access the underlying queriable data provider, and be overridden for persistence contexts
+            that require any form of data filtering
             </summary>
         </member>
         <member name="P:Penguin.Persistence.Abstractions.PersistenceContext`1.IsValid">

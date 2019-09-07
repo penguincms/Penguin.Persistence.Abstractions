@@ -22,16 +22,10 @@
     /// </summary>
     public class EntityAttribute : PersistenceAttribute
     {
-        #region Properties
-
         /// <summary>
         /// What kind of entity this is
         /// </summary>
         public EntityType Type { get; set; }
-
-        #endregion Properties
-
-        #region Constructors
 
         /// <summary>
         /// Constructs a new instance of this attribute
@@ -42,10 +36,6 @@
             Type = type;
         }
 
-        #endregion Constructors
-
-        #region Methods
-
         /// <summary>
         /// Returns the type as a string (for use in dynamic rendering paths)
         /// </summary>
@@ -54,7 +44,5 @@
         {
             return Type.ToString();
         }
-
-        #endregion Methods
     }
 }

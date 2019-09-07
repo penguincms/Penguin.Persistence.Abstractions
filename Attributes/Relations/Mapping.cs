@@ -12,8 +12,6 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
     /// </summary>
     public class End
     {
-        #region Properties
-
         /// <summary>
         /// The primary ID for the class used for declaring mapping tables
         /// </summary>
@@ -28,8 +26,6 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         /// The type of the class holding this end of the relationship
         /// </summary>
         public Type Type { get; set; }
-
-        #endregion Properties
     }
 
     /// <summary>
@@ -37,8 +33,6 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
     /// </summary>
     public class Mapping
     {
-        #region Properties
-
         /// <summary>
         /// The owner of the relationship and the class where the attribute is found
         /// </summary>
@@ -54,10 +48,6 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         /// </summary>
         public string TableName { get; set; }
 
-        #endregion Properties
-
-        #region Constructors
-
         /// <summary>
         /// Constructs a new instance of this attribute
         /// </summary>
@@ -66,8 +56,6 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
             Left = new End();
             Right = new End();
         }
-
-        #endregion Constructors
     }
 
     /// <summary>
@@ -75,16 +63,10 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
     /// </summary>
     public abstract class MappingAttribute : RelationalAttribute
     {
-        #region Properties
-
         /// <summary>
         /// Sets/gets the mapping data for this relationship as defined when constructed
         /// </summary>
         public Mapping SetMapping { get; internal set; }
-
-        #endregion Properties
-
-        #region Methods
 
         /// <summary>
         /// Gets the mapping data for this relationship by attempting to fill in any undefined values
@@ -178,7 +160,5 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
                 return null;
             }
         }
-
-        #endregion Methods
     }
 }

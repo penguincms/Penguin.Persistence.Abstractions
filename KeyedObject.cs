@@ -11,15 +11,11 @@ namespace Penguin.Persistence.Abstractions.Models.Base
     [Entity(EntityType.Link)]
     public abstract class KeyedObject
     {
-        #region Properties
-
         /// <summary>
         /// The default unique int Key for any objects deriving from this type
         /// </summary>
         [Key]
         [DontAllow(DisplayContext.Edit | DisplayContext.List)]
         public int _Id { get; set; }
-
-        #endregion Properties
     }
 }

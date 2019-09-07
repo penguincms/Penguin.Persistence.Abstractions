@@ -9,45 +9,36 @@ namespace Penguin.Persistence.Abstractions.Interfaces
     /// <typeparam name="T">The type of object being specifically referenced to by this instance</typeparam>
     public interface IPersistenceContext<T> : IQueryable<T>, IPersistenceContext where T : class
     {
-        #region Properties
         /// <summary>
-        /// This should access the underlying queriable data provider, and be overridden for persistence contexts 
-        /// that require any form of data filtering 
+        /// This should access the underlying queriable data provider, and be overridden for persistence contexts
+        /// that require any form of data filtering
         /// </summary>
         IQueryable<T> All { get; }
 
         /// <summary>
-        /// This should perform all of the same data filtering and population as All, however it should 
+        /// This should perform all of the same data filtering and population as All, however it should
         /// do all of this specific to the derived type and return the derived type as though it was a top
         /// level persistence context
         /// </summary>
         IQueryable<TDerived> OfType<TDerived>() where TDerived : T;
 
-        #endregion Properties
-
-            #region Methods
         /// <summary>
         /// This should add a new object to the data store, or update an existing matching object
         /// </summary>
         /// <param name="o">The object(s) to add or update</param>
         void AddOrUpdate(params T[] o);
-
-        #endregion Methods
     }
+
     /// <summary>
     /// A nongeneric interface for a persistence context to allow access to data without knowing the underlying type
     /// </summary>
     public interface IPersistenceContext : IQueryable
     {
-        #region Properties
         /// <summary>
         /// This should return a true if the object used to construct this persistence context has an associated data store (ex DbSet)
         /// </summary>
         bool IsValid { get; }
 
-        #endregion Properties
-
-        #region Methods
         /// <summary>
         /// This should add a new object to the underlying data store
         /// </summary>
@@ -107,7 +98,5 @@ namespace Penguin.Persistence.Abstractions.Interfaces
         /// </summary>
         /// <returns>A new IWriteContext instance that is pre-registered with this persistence context</returns>
         IWriteContext WriteContext();
-
-        #endregion Methods
     }
 }

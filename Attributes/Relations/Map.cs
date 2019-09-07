@@ -8,9 +8,6 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
     /// </summary>
     public class MapAttribute : MappingAttribute
     {
-        #region Constructors
-
-
         /// <summary>
         /// Constructs a new instance of this attribute
         /// </summary>
@@ -43,10 +40,6 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
             };
         }
 
-        #endregion Constructors
-
-        #region Methods
-
         /// <summary>
         /// Returns the type of the property on the other end of the relationship. This seems weird
         /// </summary>
@@ -56,7 +49,5 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         {
             return GetKeyType(LeftPropertyType);
         }
-
-        #endregion Methods
     }
 }

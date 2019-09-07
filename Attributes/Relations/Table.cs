@@ -5,8 +5,6 @@
     /// </summary>
     public class TableAttribute : RelationalAttribute
     {
-        #region Properties
-
         /// <summary>
         /// For EF, whether or not to map inherited types to this collection
         /// </summary>
@@ -16,10 +14,6 @@
         /// The name that the collection should be given, or for databases, the table name
         /// </summary>
         public string Name { get; set; }
-
-        #endregion Properties
-
-        #region Constructors
 
         /// <summary>
         /// Constructs a new instance of this attribute
@@ -31,7 +25,5 @@
             this.Name = name;
             this.MapInherited = mapInherited;
         }
-
-        #endregion Constructors
     }
 }
