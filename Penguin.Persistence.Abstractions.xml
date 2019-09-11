@@ -222,10 +222,11 @@
             </summary>
         </member>
         <member name="M:Penguin.Persistence.Abstractions.Attributes.Relations.HasRequiredAttribute.#ctor(System.String,System.Type)">
-            <summary>
-            </summary>
-            <param name="targetProperty">The property name that defines the key referenced</param>
-            <param name="targetType">The type of the object that this property (assumed key) references</param>
+             <summary>
+            
+             </summary>
+             <param name="targetProperty">The property name that defines the key referenced</param>
+             <param name="targetType">The type of the object that this property (assumed key) references</param>
         </member>
         <member name="T:Penguin.Persistence.Abstractions.Attributes.Relations.ManyToManyAttribute">
             <summary>
@@ -581,7 +582,7 @@
         </member>
         <member name="P:Penguin.Persistence.Abstractions.Attributes.Validation.RangeAttribute.OperandType">
             <summary>
-            Gets the type of the <see cref="P:Penguin.Persistence.Abstractions.Attributes.Validation.RangeAttribute.Minimum" /> and <see cref="P:Penguin.Persistence.Abstractions.Attributes.Validation.RangeAttribute.Maximum" /> values (e.g. Int32, Double, or some custom type)
+            Gets the type of the <see cref="P:Penguin.Persistence.Abstractions.Attributes.Validation.RangeAttribute.Minimum"/> and <see cref="P:Penguin.Persistence.Abstractions.Attributes.Validation.RangeAttribute.Maximum"/> values (e.g. Int32, Double, or some custom type)
             </summary>
         </member>
         <member name="M:Penguin.Persistence.Abstractions.Attributes.Validation.RangeAttribute.#ctor">
@@ -789,6 +790,12 @@
             </summary>
             <param name="o">The object(s) to remove from the data store</param>
         </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepository.Get">
+            <summary>
+            Should return every object from the repository
+            </summary>
+            <returns>Every object from the repository</returns>
+        </member>
         <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepository.Update(System.Object[])">
             <summary>
             This should update any objects that already exist in the underlying data store
@@ -808,12 +815,6 @@
             Returns a new write context for the underlying persistence context
             </summary>
             <returns> a new write context for the underlying persistence context</returns>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepository.Get">
-            <summary>
-            Should return every object from the repository
-            </summary>
-            <returns>Every object from the repository</returns>
         </member>
         <member name="T:Penguin.Persistence.Abstractions.Interfaces.IRepositoryI`1">
             <summary>
@@ -946,11 +947,6 @@
             that require any form of data filtering
             </summary>
         </member>
-        <member name="P:Penguin.Persistence.Abstractions.PersistenceContext`1.IsValid">
-            <summary>
-            This should return a true if the object used to construct this persistence context has an associated data store (ex DbSet)
-            </summary>
-        </member>
         <member name="P:Penguin.Persistence.Abstractions.PersistenceContext`1.ElementType">
             <summary>
             This returns the core type of the underlying IQueriable
@@ -959,6 +955,11 @@
         <member name="P:Penguin.Persistence.Abstractions.PersistenceContext`1.Expression">
             <summary>
             This returns the Expression of the underlying IQueriable
+            </summary>
+        </member>
+        <member name="P:Penguin.Persistence.Abstractions.PersistenceContext`1.IsValid">
+            <summary>
+            This should return a true if the object used to construct this persistence context has an associated data store (ex DbSet)
             </summary>
         </member>
         <member name="P:Penguin.Persistence.Abstractions.PersistenceContext`1.Provider">
@@ -1033,6 +1034,13 @@
             </summary>
             <returns>An array of any IWriteContexts that are currently registered by this persistence context</returns>
         </member>
+        <member name="M:Penguin.Persistence.Abstractions.PersistenceContext`1.OfType``1">
+            <summary>
+            This should return a list from the data source containing only the derived type with any applicable relations/filters
+            </summary>
+            <typeparam name="TDerived">A type stored in the context that is derived from the main context type</typeparam>
+            <returns>An IQueriable to access this child list of objects</returns>
+        </member>
         <member name="M:Penguin.Persistence.Abstractions.PersistenceContext`1.Update(System.Object[])">
             <summary>
             This should update any objects that already exist in the underlying data store
@@ -1044,13 +1052,6 @@
             This should spawn a new IWriteContext instance that is pre-registered with this persistence context
             </summary>
             <returns>A new IWriteContext instance that is pre-registered with this persistence context</returns>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.PersistenceContext`1.OfType``1">
-            <summary>
-            This should return a list from the data source containing only the derived type with any applicable relations/filters
-            </summary>
-            <typeparam name="TDerived">A type stored in the context that is derived from the main context type</typeparam>
-            <returns>An IQueriable to access this child list of objects</returns>
         </member>
         <member name="P:Penguin.Persistence.Abstractions.PersistenceContext`1.AdditionalDataSources">
             <summary>
