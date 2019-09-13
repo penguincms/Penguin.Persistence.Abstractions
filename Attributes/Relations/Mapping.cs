@@ -93,6 +93,12 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
                 List<PropertyInfo> rightProperties = mapping.Right.Type.GetProperties()
                                                                        .Where(p => searchType.IsAssignableFrom(p.PropertyType))
                                                                        .ToList();
+                if(!rightProperties.Any())
+                {
+                    rightProperties = mapping.Right.Type.GetProperties(BindingFlags.NonPublic | BindingFlags.Instance)
+                                             .Where(p => searchType.IsAssignableFrom(p.PropertyType))
+                                             .ToList();
+                }
 
                 if (rightProperties.Count() != 1)
                 {
