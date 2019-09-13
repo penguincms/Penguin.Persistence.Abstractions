@@ -1,4 +1,5 @@
 ﻿using Penguin.Persistence.Abstractions.Attributes.Control;
+using Penguin.Reflection.Extensions;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -68,6 +69,23 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         /// </summary>
         public Mapping SetMapping { get; internal set; }
 
+        private bool CheckPropertyAssignment(PropertyInfo toCheck, Type target)
+        {
+            Type leftType;
+            Type rightType;
+
+            if(toCheck.PropertyType.IsCollection() && target.IsCollection())
+            {
+                leftType = toCheck.PropertyType.GetCollectionType();
+                rightType = target.GetCollectionType();
+            } else
+            {
+                leftType = toCheck.PropertyType;
+                rightType = target;
+            }
+
+            return leftType.IsAssignableFrom(rightType);
+        }
         /// <summary>
         /// Gets the mapping data for this relationship by attempting to fill in any undefined values
         /// </summary>
@@ -91,12 +109,12 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
                 Type searchType = GetRightPropertyType(leftProperty.ReflectedType);
 
                 List<PropertyInfo> rightProperties = mapping.Right.Type.GetProperties()
-                                                                       .Where(p => searchType.IsAssignableFrom(p.PropertyType))
+                                                                       .Where(p => CheckPropertyAssignment(p, searchType))
                                                                        .ToList();
                 if(!rightProperties.Any())
                 {
                     rightProperties = mapping.Right.Type.GetProperties(BindingFlags.NonPublic | BindingFlags.Instance)
-                                             .Where(p => searchType.IsAssignableFrom(p.PropertyType))
+                                             .Where(p => CheckPropertyAssignment(p, searchType))
                                              .ToList();
                 }
 
