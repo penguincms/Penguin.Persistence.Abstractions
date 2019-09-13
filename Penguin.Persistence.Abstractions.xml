@@ -186,25 +186,27 @@
         </member>
         <member name="T:Penguin.Persistence.Abstractions.Attributes.Relations.HasOptionalAttribute">
             <summary>
-            Denotes that this relationship should be optional, which should be the default
+            Specifies that the property this applies to is optional
+            be set
             </summary>
         </member>
-        <member name="P:Penguin.Persistence.Abstractions.Attributes.Relations.HasOptionalAttribute.TargetProperty">
-            <summary>
-            The property name that defines the key referenced
-            </summary>
-        </member>
-        <member name="P:Penguin.Persistence.Abstractions.Attributes.Relations.HasOptionalAttribute.TargetType">
-            <summary>
-            The type of the object that this property (assumed key) references
-            </summary>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Attributes.Relations.HasOptionalAttribute.#ctor(System.String,System.Type)">
+        <member name="M:Penguin.Persistence.Abstractions.Attributes.Relations.HasOptionalAttribute.#ctor">
             <summary>
             Constructs a new instance of this attribute
             </summary>
-            <param name="targetProperty">The property name that defines the key referenced</param>
-            <param name="targetType">The type of the object that this property (assumed key) references</param>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Attributes.Relations.HasOptionalAttribute.#ctor(System.String)">
+            <summary>
+            Constructs a new instance of this attribute
+            </summary>
+            <param name="rightProperty">The optional name for the property that links back to this object</param>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Attributes.Relations.HasOptionalAttribute.GetRightPropertyType(System.Type)">
+            <summary>
+            Returns the expected type of the property that links back to this one
+            </summary>
+            <param name="LeftPropertyType">The type of the class containing this attribute. Its a one-to-one so it just returns this type</param>
+            <returns>The type of the class containing this attribute</returns>
         </member>
         <member name="T:Penguin.Persistence.Abstractions.Attributes.Relations.HasRequiredAttribute">
             <summary>
@@ -301,6 +303,11 @@
             <param name="LeftPropertyType">The left property type</param>
             <returns>Gets the key type of the left property</returns>
         </member>
+        <member name="T:Penguin.Persistence.Abstractions.Attributes.Relations.MappedAttribute">
+            <summary>
+            Put on a private property to specify that it SHOULD be mapped
+            </summary>
+        </member>
         <member name="T:Penguin.Persistence.Abstractions.Attributes.Relations.End">
             <summary>
             A collection of data required to define one end of a two ended mapping
@@ -389,28 +396,6 @@
             <summary>
             On classes, used to specify that the object should not be part of any database context. On properties, used to specify that the property should not be persisted
             </summary>
-        </member>
-        <member name="T:Penguin.Persistence.Abstractions.Attributes.Relations.OptionalAttribute">
-            <summary>
-            Specifies that this property is not required to be set, which should be the default either way so this should probably be avoided
-            </summary>
-        </member>
-        <member name="P:Penguin.Persistence.Abstractions.Attributes.Relations.OptionalAttribute.TargetProperty">
-            <summary>
-            The name of the property linking back to this one
-            </summary>
-        </member>
-        <member name="P:Penguin.Persistence.Abstractions.Attributes.Relations.OptionalAttribute.TargetType">
-            <summary>
-            The type of the property
-            </summary>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Attributes.Relations.OptionalAttribute.#ctor(System.String,System.Type)">
-            <summary>
-            Constructs a new instance of this attribute
-            </summary>
-            <param name="targetProperty">The name of the property linking back to this one </param>
-            <param name="targetType">The type of the property</param>
         </member>
         <member name="T:Penguin.Persistence.Abstractions.Attributes.Relations.OptionalToManyAttribute">
             <summary>
