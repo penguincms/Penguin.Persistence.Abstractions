@@ -643,6 +643,16 @@
             </summary>
             <param name="o">The object(s) to add or update</param>
         </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext`1.Get(System.Object[])">
+            <summary>
+            This should return any object with a key in the provided list
+            </summary>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext`1.Get(System.Object)">
+            <summary>
+            This should return any object with a key that matches the provided
+            </summary>
+        </member>
         <member name="T:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext">
             <summary>
             A nongeneric interface for a persistence context to allow access to data without knowing the underlying type
@@ -651,6 +661,16 @@
         <member name="P:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.IsValid">
             <summary>
             This should return a true if the object used to construct this persistence context has an associated data store (ex DbSet)
+            </summary>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.Get(System.Object[])">
+            <summary>
+            This should return any object with a key in the provided list
+            </summary>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.Get(System.Object)">
+            <summary>
+            This should return any object with a key that matches the provided
             </summary>
         </member>
         <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.Add(System.Object[])">
@@ -1037,6 +1057,26 @@
             This should spawn a new IWriteContext instance that is pre-registered with this persistence context
             </summary>
             <returns>A new IWriteContext instance that is pre-registered with this persistence context</returns>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.PersistenceContext`1.Get(System.Object[])">
+            <summary>
+            This should return any object with a key in the provided list
+            </summary>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.PersistenceContext`1.Get(System.Object)">
+            <summary>
+            This should return any object with a key that matches the provided
+            </summary>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.PersistenceContext`1.Penguin#Persistence#Abstractions#Interfaces#IPersistenceContext#Get(System.Object[])">
+            <summary>
+            This should return any object with a key in the provided list
+            </summary>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.PersistenceContext`1.Penguin#Persistence#Abstractions#Interfaces#IPersistenceContext#Get(System.Object)">
+            <summary>
+            This should return any object with a key that matches the provided
+            </summary>
         </member>
         <member name="P:Penguin.Persistence.Abstractions.PersistenceContext`1.AdditionalDataSources">
             <summary>

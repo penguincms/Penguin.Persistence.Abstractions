@@ -143,6 +143,26 @@ namespace Penguin.Persistence.Abstractions
         public abstract IWriteContext WriteContext();
 
         /// <summary>
+        /// This should return any object with a key in the provided list
+        /// </summary>
+        public abstract T[] Get(object[] Keys);
+
+        /// <summary>
+        /// This should return any object with a key that matches the provided
+        /// </summary>
+        public abstract T Get(object Key);
+
+        /// <summary>
+        /// This should return any object with a key in the provided list
+        /// </summary>
+        object[] IPersistenceContext.Get(object[] Keys) => this.Get(Keys);
+
+        /// <summary>
+        /// This should return any object with a key that matches the provided
+        /// </summary>
+        object IPersistenceContext.Get(object Key) => this.Get(Key);
+
+        /// <summary>
         /// This should contain any additional sources for objects that are READ ONLY (ex caches)
         /// </summary>
         protected virtual IEnumerable<T>[] AdditionalDataSources { get; set; }

@@ -27,6 +27,16 @@ namespace Penguin.Persistence.Abstractions.Interfaces
         /// </summary>
         /// <param name="o">The object(s) to add or update</param>
         void AddOrUpdate(params T[] o);
+
+        /// <summary>
+        /// This should return any object with a key in the provided list
+        /// </summary>
+        new T[] Get(object[] Keys);
+
+        /// <summary>
+        /// This should return any object with a key that matches the provided
+        /// </summary>
+        new T Get(object Key);
     }
 
     /// <summary>
@@ -38,6 +48,16 @@ namespace Penguin.Persistence.Abstractions.Interfaces
         /// This should return a true if the object used to construct this persistence context has an associated data store (ex DbSet)
         /// </summary>
         bool IsValid { get; }
+
+        /// <summary>
+        /// This should return any object with a key in the provided list
+        /// </summary>
+        object[] Get(object[] Key);
+
+        /// <summary>
+        /// This should return any object with a key that matches the provided
+        /// </summary>
+        object Get(object Key);
 
         /// <summary>
         /// This should add a new object to the underlying data store
