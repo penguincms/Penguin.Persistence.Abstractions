@@ -27,7 +27,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         {
             this.SetMapping = new Mapping()
             {
-                Right = new End()
+                Right = new MappingEnd()
                 {
                     Property = rightProperty
                 }

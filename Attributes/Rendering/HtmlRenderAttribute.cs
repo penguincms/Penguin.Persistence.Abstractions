@@ -5,6 +5,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Rendering
     /// <summary>
     /// Attribute used to tell a dynamic rendering system that this string value should use the provided Input type when rendering to the browser
     /// </summary>
+    [AttributeUsage(AttributeTargets.Property)]
     public sealed class HtmlRenderAttribute : Attribute
     {
         /// <summary>

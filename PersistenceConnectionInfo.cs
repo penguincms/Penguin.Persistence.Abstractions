@@ -45,6 +45,11 @@ namespace Penguin.Persistence.Abstractions
         /// <param name="providerName">The name of the provider type (Specifically for EF)</param>
         public PersistenceConnectionInfo(string connectionString, string providerName = "")
         {
+            if (string.IsNullOrWhiteSpace(connectionString))
+            {
+                throw new ArgumentException("Connection must be populated", nameof(connectionString));
+            }
+
             ConnectionString = connectionString;
             ProviderName = providerName;
 

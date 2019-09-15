@@ -4,47 +4,47 @@
         <name>Penguin.Persistence.Abstractions</name>
     </assembly>
     <members>
-        <member name="T:Penguin.Persistence.Abstractions.Attributes.Control.DisplayContext">
+        <member name="T:Penguin.Persistence.Abstractions.Attributes.Control.DisplayContexts">
             <summary>
             Represents a method of displaying information to a user, used to attribute properties in a way that only applies to a single method of display
             </summary>
         </member>
-        <member name="F:Penguin.Persistence.Abstractions.Attributes.Control.DisplayContext.None">
+        <member name="F:Penguin.Persistence.Abstractions.Attributes.Control.DisplayContexts.None">
             <summary>
             Should not be used
             </summary>
         </member>
-        <member name="F:Penguin.Persistence.Abstractions.Attributes.Control.DisplayContext.Edit">
+        <member name="F:Penguin.Persistence.Abstractions.Attributes.Control.DisplayContexts.Edit">
             <summary>
             Only applies when the used is making alterations to an object. Disallowing should still show the data, but it should not be editable
             </summary>
         </member>
-        <member name="F:Penguin.Persistence.Abstractions.Attributes.Control.DisplayContext.BatchEdit">
+        <member name="F:Penguin.Persistence.Abstractions.Attributes.Control.DisplayContexts.BatchEdit">
             <summary>
             Only applies when a this property is being rendered as part of editing a large list of objects
             </summary>
         </member>
-        <member name="F:Penguin.Persistence.Abstractions.Attributes.Control.DisplayContext.List">
+        <member name="F:Penguin.Persistence.Abstractions.Attributes.Control.DisplayContexts.List">
             <summary>
             Only applies when this object is being listed out as part of a group
             </summary>
         </member>
-        <member name="F:Penguin.Persistence.Abstractions.Attributes.Control.DisplayContext.View">
+        <member name="F:Penguin.Persistence.Abstractions.Attributes.Control.DisplayContexts.View">
             <summary>
             Applies to any interaction that makes this object visible
             </summary>
         </member>
-        <member name="F:Penguin.Persistence.Abstractions.Attributes.Control.DisplayContext.NotInherited">
+        <member name="F:Penguin.Persistence.Abstractions.Attributes.Control.DisplayContexts.NotInherited">
             <summary>
             Any context in which this property is not accessed through a derived class
             </summary>
         </member>
-        <member name="F:Penguin.Persistence.Abstractions.Attributes.Control.DisplayContext.TemplateBinding">
+        <member name="F:Penguin.Persistence.Abstractions.Attributes.Control.DisplayContexts.TemplateBinding">
             <summary>
             Any context in which this property is being bound via macros to a template (ex Email system)
             </summary>
         </member>
-        <member name="F:Penguin.Persistence.Abstractions.Attributes.Control.DisplayContext.Any">
+        <member name="F:Penguin.Persistence.Abstractions.Attributes.Control.DisplayContexts.Any">
             <summary>
             Applies to all contexts
             </summary>
@@ -65,30 +65,30 @@
             This DisplayContext(s) this attribute specifies
             </summary>
         </member>
-        <member name="M:Penguin.Persistence.Abstractions.Attributes.Control.DontAllowAttribute.#ctor(Penguin.Persistence.Abstractions.Attributes.Control.DisplayContext)">
+        <member name="M:Penguin.Persistence.Abstractions.Attributes.Control.DontAllowAttribute.#ctor(Penguin.Persistence.Abstractions.Attributes.Control.DisplayContexts)">
             <summary>
             Creates a new instance of this attribute
             </summary>
             <param name="context">The display context(s) that this property should be hidden from</param>
         </member>
-        <member name="T:Penguin.Persistence.Abstractions.Attributes.Control.EagerLoad">
+        <member name="T:Penguin.Persistence.Abstractions.Attributes.Control.EagerLoadAttribute">
             <summary>
             1 loads only the entity. Each additional loads one more level.
             No depth supplied is infinite until reaching a tag with a supplied depth
             </summary>
         </member>
-        <member name="P:Penguin.Persistence.Abstractions.Attributes.Control.EagerLoad.Depth">
+        <member name="P:Penguin.Persistence.Abstractions.Attributes.Control.EagerLoadAttribute.Depth">
             <summary>
             The number of steps to travel down the object graph
             </summary>
         </member>
-        <member name="M:Penguin.Persistence.Abstractions.Attributes.Control.EagerLoad.#ctor(System.Int32)">
+        <member name="M:Penguin.Persistence.Abstractions.Attributes.Control.EagerLoadAttribute.#ctor(System.Int32)">
             <summary>
             Creates a new instance of this attribute with the specified depth
             </summary>
             <param name="depth">The number of steps to travel down the object graph</param>
         </member>
-        <member name="M:Penguin.Persistence.Abstractions.Attributes.Control.EagerLoad.#ctor">
+        <member name="M:Penguin.Persistence.Abstractions.Attributes.Control.EagerLoadAttribute.#ctor">
             <summary>
             Creates a new instance of this attribute with the specified depth
             </summary>
@@ -308,22 +308,22 @@
             Put on a private property to specify that it SHOULD be mapped
             </summary>
         </member>
-        <member name="T:Penguin.Persistence.Abstractions.Attributes.Relations.End">
+        <member name="T:Penguin.Persistence.Abstractions.Attributes.Relations.MappingEnd">
             <summary>
             A collection of data required to define one end of a two ended mapping
             </summary>
         </member>
-        <member name="P:Penguin.Persistence.Abstractions.Attributes.Relations.End.Key">
+        <member name="P:Penguin.Persistence.Abstractions.Attributes.Relations.MappingEnd.Key">
             <summary>
             The primary ID for the class used for declaring mapping tables
             </summary>
         </member>
-        <member name="P:Penguin.Persistence.Abstractions.Attributes.Relations.End.Property">
+        <member name="P:Penguin.Persistence.Abstractions.Attributes.Relations.MappingEnd.Property">
             <summary>
             The property that forms the link between the classes
             </summary>
         </member>
-        <member name="P:Penguin.Persistence.Abstractions.Attributes.Relations.End.Type">
+        <member name="P:Penguin.Persistence.Abstractions.Attributes.Relations.MappingEnd.Type">
             <summary>
             The type of the class holding this end of the relationship
             </summary>
@@ -618,41 +618,6 @@
             </summary>
             <param name="length">The maximum string length for the property</param>
         </member>
-        <member name="T:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext`1">
-            <summary>
-            A interface representing a context used for persisting information to a database or other format
-            </summary>
-            <typeparam name="T">The type of object being specifically referenced to by this instance</typeparam>
-        </member>
-        <member name="P:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext`1.All">
-            <summary>
-            This should access the underlying queriable data provider, and be overridden for persistence contexts
-            that require any form of data filtering
-            </summary>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext`1.OfType``1">
-            <summary>
-            This should perform all of the same data filtering and population as All, however it should
-            do all of this specific to the derived type and return the derived type as though it was a top
-            level persistence context
-            </summary>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext`1.AddOrUpdate(`0[])">
-            <summary>
-            This should add a new object to the data store, or update an existing matching object
-            </summary>
-            <param name="o">The object(s) to add or update</param>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext`1.Get(System.Object[])">
-            <summary>
-            This should return any object with a key in the provided list
-            </summary>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext`1.Get(System.Object)">
-            <summary>
-            This should return any object with a key that matches the provided
-            </summary>
-        </member>
         <member name="T:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext">
             <summary>
             A nongeneric interface for a persistence context to allow access to data without knowing the underlying type
@@ -663,12 +628,12 @@
             This should return a true if the object used to construct this persistence context has an associated data store (ex DbSet)
             </summary>
         </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.Get(System.Object[])">
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.Find(System.Object[])">
             <summary>
             This should return any object with a key in the provided list
             </summary>
         </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.Get(System.Object)">
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.Find(System.Object)">
             <summary>
             This should return any object with a key that matches the provided
             </summary>
@@ -733,6 +698,41 @@
             </summary>
             <returns>A new IWriteContext instance that is pre-registered with this persistence context</returns>
         </member>
+        <member name="T:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext`1">
+            <summary>
+            A interface representing a context used for persisting information to a database or other format
+            </summary>
+            <typeparam name="T">The type of object being specifically referenced to by this instance</typeparam>
+        </member>
+        <member name="P:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext`1.All">
+            <summary>
+            This should access the underlying queriable data provider, and be overridden for persistence contexts
+            that require any form of data filtering
+            </summary>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext`1.OfType``1">
+            <summary>
+            This should perform all of the same data filtering and population as All, however it should
+            do all of this specific to the derived type and return the derived type as though it was a top
+            level persistence context
+            </summary>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext`1.AddOrUpdate(`0[])">
+            <summary>
+            This should add a new object to the data store, or update an existing matching object
+            </summary>
+            <param name="o">The object(s) to add or update</param>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext`1.Find(System.Object[])">
+            <summary>
+            This should return any object with a key in the provided list
+            </summary>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext`1.Find(System.Object)">
+            <summary>
+            This should return any object with a key that matches the provided
+            </summary>
+        </member>
         <member name="T:Penguin.Persistence.Abstractions.Interfaces.IRepository`1">
             <summary>
             An interface intended to allow for access to a persistence context of a given type
@@ -795,7 +795,7 @@
             </summary>
             <param name="o">The object(s) to remove from the data store</param>
         </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepository.Get">
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepository.Find">
             <summary>
             Should return every object from the repository
             </summary>
@@ -1058,22 +1058,22 @@
             </summary>
             <returns>A new IWriteContext instance that is pre-registered with this persistence context</returns>
         </member>
-        <member name="M:Penguin.Persistence.Abstractions.PersistenceContext`1.Get(System.Object[])">
+        <member name="M:Penguin.Persistence.Abstractions.PersistenceContext`1.Find(System.Object[])">
             <summary>
             This should return any object with a key in the provided list
             </summary>
         </member>
-        <member name="M:Penguin.Persistence.Abstractions.PersistenceContext`1.Get(System.Object)">
+        <member name="M:Penguin.Persistence.Abstractions.PersistenceContext`1.Find(System.Object)">
             <summary>
             This should return any object with a key that matches the provided
             </summary>
         </member>
-        <member name="M:Penguin.Persistence.Abstractions.PersistenceContext`1.Penguin#Persistence#Abstractions#Interfaces#IPersistenceContext#Get(System.Object[])">
+        <member name="M:Penguin.Persistence.Abstractions.PersistenceContext`1.Penguin#Persistence#Abstractions#Interfaces#IPersistenceContext#Find(System.Object[])">
             <summary>
             This should return any object with a key in the provided list
             </summary>
         </member>
-        <member name="M:Penguin.Persistence.Abstractions.PersistenceContext`1.Penguin#Persistence#Abstractions#Interfaces#IPersistenceContext#Get(System.Object)">
+        <member name="M:Penguin.Persistence.Abstractions.PersistenceContext`1.Penguin#Persistence#Abstractions#Interfaces#IPersistenceContext#Find(System.Object)">
             <summary>
             This should return any object with a key that matches the provided
             </summary>

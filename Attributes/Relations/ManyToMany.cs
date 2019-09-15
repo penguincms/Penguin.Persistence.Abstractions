@@ -26,7 +26,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         {
             this.SetMapping = new Mapping()
             {
-                Right = new End()
+                Right = new MappingEnd()
                 {
                     Property = rightProperty
                 }
@@ -43,13 +43,13 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         {
             this.SetMapping = new Mapping()
             {
-                Right = new End()
+                Right = new MappingEnd()
                 {
                     Property = rightProperty,
                     Key = rightKey
                 }
                 ,
-                Left = new End()
+                Left = new MappingEnd()
                 {
                     Key = leftKey
                 }
@@ -65,7 +65,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         {
             this.SetMapping = new Mapping()
             {
-                Right = new End()
+                Right = new MappingEnd()
                 {
                     Property = rightProperty
                 },
@@ -84,12 +84,12 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         {
             this.SetMapping = new Mapping()
             {
-                Right = new End()
+                Right = new MappingEnd()
                 {
                     Property = rightProperty,
                     Key = rightKey
                 },
-                Left = new End()
+                Left = new MappingEnd()
                 {
                     Key = leftKey
                 },

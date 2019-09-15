@@ -11,7 +11,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
     /// <summary>
     /// A collection of data required to define one end of a two ended mapping
     /// </summary>
-    public class End
+    public class MappingEnd
     {
         /// <summary>
         /// The primary ID for the class used for declaring mapping tables
@@ -37,12 +37,12 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         /// <summary>
         /// The owner of the relationship and the class where the attribute is found
         /// </summary>
-        public End Left { get; set; }
+        public MappingEnd Left { get; set; }
 
         /// <summary>
         /// The child of the relationship, this side does not have an attribute
         /// </summary>
-        public End Right { get; set; }
+        public MappingEnd Right { get; set; }
 
         /// <summary>
         /// Optional table name for generating Many-To-Many relationships
@@ -54,8 +54,8 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         /// </summary>
         public Mapping()
         {
-            Left = new End();
-            Right = new End();
+            Left = new MappingEnd();
+            Right = new MappingEnd();
         }
     }
 
@@ -69,7 +69,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         /// </summary>
         public Mapping SetMapping { get; internal set; }
 
-        private bool CheckPropertyAssignment(PropertyInfo toCheck, Type target)
+        private static bool CheckPropertyAssignment(PropertyInfo toCheck, Type target)
         {
             Type leftType;
             Type rightType;
@@ -93,6 +93,11 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         /// <returns>The filled in mapping data that may contain assumed definitions if there were unspecified properties</returns>
         public Mapping GetMapping(PropertyInfo leftProperty)
         {
+            if (leftProperty is null)
+            {
+                throw new ArgumentNullException(nameof(leftProperty));
+            }
+
             Mapping mapping = new Mapping();
 
             mapping.Left.Type = SetMapping.Left.Type ?? leftProperty.ReflectedType;
@@ -131,8 +136,8 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
             mapping.Right.Property = this.SetMapping.Right.Property;
             mapping.Left.Property = leftProperty.Name;
 
-            mapping.Left.Key = this.SetMapping.Left.Key ?? this.GetKey(mapping.Left.Type);
-            mapping.Right.Key = this.SetMapping.Right.Key ?? this.GetKey(mapping.Right.Type);
+            mapping.Left.Key = this.SetMapping.Left.Key ?? GetKey(mapping.Left.Type);
+            mapping.Right.Key = this.SetMapping.Right.Key ?? GetKey(mapping.Right.Type);
 
             mapping.TableName = this.SetMapping.TableName ?? $"{mapping.Left.Type.Name}{mapping.Right.Type.Name}";
 
@@ -152,8 +157,13 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         /// </summary>
         /// <param name="type">The type to get the key for</param>
         /// <returns>The full name (Type.FullName + Property) for the property that should be used as a key</returns>
-        protected string GetKey(Type type)
+        protected static string GetKey(Type type)
         {
+            if (type is null)
+            {
+                throw new ArgumentNullException(nameof(type));
+            }
+
             PropertyInfo leftKey = type.GetProperties().FirstOrDefault(p => p.GetCustomAttribute<KeyAttribute>() != null);
 
             if (leftKey != null)
@@ -171,8 +181,13 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         /// </summary>
         /// <param name="type">The type to get the key for</param>
         /// <returns>The key for that property, or null if not defined</returns>
-        protected Type GetKeyType(Type type)
+        protected static Type GetKeyType(Type type)
         {
+            if (type is null)
+            {
+                throw new ArgumentNullException(nameof(type));
+            }
+
             PropertyInfo leftKey = type.GetProperties().FirstOrDefault(p => p.GetCustomAttribute<KeyAttribute>() != null);
 
             if (leftKey != null)

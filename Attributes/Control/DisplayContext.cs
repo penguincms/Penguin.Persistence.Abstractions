@@ -6,7 +6,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Control
     /// Represents a method of displaying information to a user, used to attribute properties in a way that only applies to a single method of display
     /// </summary>
     [Flags]
-    public enum DisplayContext
+    public enum DisplayContexts
     {
         /// <summary>
         /// Should not be used

@@ -13,6 +13,7 @@ namespace Penguin.Persistence.Abstractions
     /// A base class representing a context used for persisting information to a database or other format
     /// </summary>
     /// <typeparam name="T">The type of object being specifically referenced to by this instance</typeparam>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Naming", "CA1710:Identifiers should have correct suffix", Justification = "<Pending>")]
     public abstract class PersistenceContext<T> : IPersistenceContext<T> where T : KeyedObject
     {
         /// <summary>
@@ -145,27 +146,27 @@ namespace Penguin.Persistence.Abstractions
         /// <summary>
         /// This should return any object with a key in the provided list
         /// </summary>
-        public abstract T[] Get(object[] Keys);
+        public abstract T[] Find(object[] Keys);
 
         /// <summary>
         /// This should return any object with a key that matches the provided
         /// </summary>
-        public abstract T Get(object Key);
+        public abstract T Find(object Key);
 
         /// <summary>
         /// This should return any object with a key in the provided list
         /// </summary>
-        object[] IPersistenceContext.Get(object[] Keys) => this.Get(Keys);
+        object[] IPersistenceContext.Find(object[] Keys) => this.Find(Keys);
 
         /// <summary>
         /// This should return any object with a key that matches the provided
         /// </summary>
-        object IPersistenceContext.Get(object Key) => this.Get(Key);
+        object IPersistenceContext.Find(object Key) => this.Find(Key);
 
         /// <summary>
         /// This should contain any additional sources for objects that are READ ONLY (ex caches)
         /// </summary>
-        protected virtual IEnumerable<T>[] AdditionalDataSources { get; set; }
+        protected virtual IEnumerable<IEnumerable<T>> AdditionalDataSources { get; set; }
 
         /// <summary>
         /// This returns the type of the object being persisted in this context
