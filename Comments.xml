@@ -693,11 +693,6 @@
             </summary>
             <returns>An array of any IWriteContexts that are currently registered by this persistence context</returns>
         </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.Migrate">
-            <summary>
-            This should perform any setup required for the persistence context to function
-            </summary>
-        </member>
         <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.Update(System.Object[])">
             <summary>
             This should update any objects that already exist in the underlying data store
@@ -709,6 +704,16 @@
             This should spawn a new IWriteContext instance that is pre-registered with this persistence context
             </summary>
             <returns>A new IWriteContext instance that is pre-registered with this persistence context</returns>
+        </member>
+        <member name="T:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContextMigrator">
+            <summary>
+            An interface designed to perform any migrations required for the persistence context
+            </summary>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContextMigrator.Migrate">
+            <summary>
+            This should perform any setup required for the persistence context to function
+            </summary>
         </member>
         <member name="T:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext`1">
             <summary>

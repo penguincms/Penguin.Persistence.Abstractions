@@ -74,11 +74,6 @@ namespace Penguin.Persistence.Abstractions.Interfaces
         IWriteContext[] GetWriteContexts();
 
         /// <summary>
-        /// This should perform any setup required for the persistence context to function
-        /// </summary>
-        void Migrate();
-
-        /// <summary>
         /// This should update any objects that already exist in the underlying data store
         /// </summary>
         /// <param name="o">The objects to update from the underlying data store</param>
