@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 
 namespace Penguin.Persistence.Abstractions.Interfaces
 {
@@ -18,11 +15,6 @@ namespace Penguin.Persistence.Abstractions.Interfaces
         IPersistenceContext<T> Context { get; }
 
         /// <summary>
-        /// An accessor for only derived types
-        /// </summary>
-        IQueryable<TDerived> OfType<TDerived>() where TDerived : T;
-
-        /// <summary>
         /// Resets the object unique fields and adds a copy to the context
         /// </summary>
         /// <param name="o">The object to copy and add</param>
@@ -33,6 +25,11 @@ namespace Penguin.Persistence.Abstractions.Interfaces
         /// </summary>
         /// <param name="o">The object to copy and add</param>
         void AddOrUpdateCopy(T o);
+
+        /// <summary>
+        /// An accessor for only derived types
+        /// </summary>
+        IQueryable<TDerived> OfType<TDerived>() where TDerived : T;
 
         /// <summary>
         /// Creates a shallow clone of an object with new keys

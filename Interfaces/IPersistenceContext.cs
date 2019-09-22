@@ -16,16 +16,6 @@ namespace Penguin.Persistence.Abstractions.Interfaces
         bool IsValid { get; }
 
         /// <summary>
-        /// This should return any object with a key in the provided list
-        /// </summary>
-        object[] Find(object[] Key);
-
-        /// <summary>
-        /// This should return any object with a key that matches the provided
-        /// </summary>
-        object Find(object Key);
-
-        /// <summary>
         /// This should add a new object to the underlying data store
         /// </summary>
         /// <param name="o">The object(s) to add to the data store</param>
@@ -68,10 +58,25 @@ namespace Penguin.Persistence.Abstractions.Interfaces
         void EndWrite(IWriteContext context);
 
         /// <summary>
+        /// This should return any object with a key in the provided list
+        /// </summary>
+        object[] Find(object[] Key);
+
+        /// <summary>
+        /// This should return any object with a key that matches the provided
+        /// </summary>
+        object Find(object Key);
+
+        /// <summary>
         /// This should return an array of any IWriteContexts that are currently registered by this persistence context
         /// </summary>
         /// <returns>An array of any IWriteContexts that are currently registered by this persistence context</returns>
         IWriteContext[] GetWriteContexts();
+
+        /// <summary>
+        /// This should perform any setup required for the persistence context to function
+        /// </summary>
+        void Migrate();
 
         /// <summary>
         /// This should update any objects that already exist in the underlying data store

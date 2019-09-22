@@ -111,6 +111,26 @@ namespace Penguin.Persistence.Abstractions
         public abstract void EndWrite(IWriteContext context);
 
         /// <summary>
+        /// This should return any object with a key in the provided list
+        /// </summary>
+        public abstract T[] Find(object[] Keys);
+
+        /// <summary>
+        /// This should return any object with a key that matches the provided
+        /// </summary>
+        public abstract T Find(object Key);
+
+        /// <summary>
+        /// This should return any object with a key in the provided list
+        /// </summary>
+        object[] IPersistenceContext.Find(object[] Keys) => this.Find(Keys);
+
+        /// <summary>
+        /// This should return any object with a key that matches the provided
+        /// </summary>
+        object IPersistenceContext.Find(object Key) => this.Find(Key);
+
+        /// <summary>
         /// This returns the Enumerator for the underlying IQueriable
         /// </summary>
         /// <returns>The Enumerator for the underlying IQueriable</returns>
@@ -123,6 +143,8 @@ namespace Penguin.Persistence.Abstractions
         /// </summary>
         /// <returns>An array of any IWriteContexts that are currently registered by this persistence context</returns>
         public abstract IWriteContext[] GetWriteContexts();
+
+        public abstract void Migrate();
 
         /// <summary>
         /// This should return a list from the data source containing only the derived type with any applicable relations/filters
@@ -142,26 +164,6 @@ namespace Penguin.Persistence.Abstractions
         /// </summary>
         /// <returns>A new IWriteContext instance that is pre-registered with this persistence context</returns>
         public abstract IWriteContext WriteContext();
-
-        /// <summary>
-        /// This should return any object with a key in the provided list
-        /// </summary>
-        public abstract T[] Find(object[] Keys);
-
-        /// <summary>
-        /// This should return any object with a key that matches the provided
-        /// </summary>
-        public abstract T Find(object Key);
-
-        /// <summary>
-        /// This should return any object with a key in the provided list
-        /// </summary>
-        object[] IPersistenceContext.Find(object[] Keys) => this.Find(Keys);
-
-        /// <summary>
-        /// This should return any object with a key that matches the provided
-        /// </summary>
-        object IPersistenceContext.Find(object Key) => this.Find(Key);
 
         /// <summary>
         /// This should contain any additional sources for objects that are READ ONLY (ex caches)

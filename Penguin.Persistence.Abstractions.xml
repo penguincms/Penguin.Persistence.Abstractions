@@ -225,7 +225,6 @@
         </member>
         <member name="M:Penguin.Persistence.Abstractions.Attributes.Relations.HasRequiredAttribute.#ctor(System.String,System.Type)">
              <summary>
-            
              </summary>
              <param name="targetProperty">The property name that defines the key referenced</param>
              <param name="targetType">The type of the object that this property (assumed key) references</param>
@@ -567,7 +566,7 @@
         </member>
         <member name="P:Penguin.Persistence.Abstractions.Attributes.Validation.RangeAttribute.OperandType">
             <summary>
-            Gets the type of the <see cref="P:Penguin.Persistence.Abstractions.Attributes.Validation.RangeAttribute.Minimum"/> and <see cref="P:Penguin.Persistence.Abstractions.Attributes.Validation.RangeAttribute.Maximum"/> values (e.g. Int32, Double, or some custom type)
+            Gets the type of the <see cref="P:Penguin.Persistence.Abstractions.Attributes.Validation.RangeAttribute.Minimum" /> and <see cref="P:Penguin.Persistence.Abstractions.Attributes.Validation.RangeAttribute.Maximum" /> values (e.g. Int32, Double, or some custom type)
             </summary>
         </member>
         <member name="M:Penguin.Persistence.Abstractions.Attributes.Validation.RangeAttribute.#ctor">

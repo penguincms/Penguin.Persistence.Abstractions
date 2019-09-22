@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 
 namespace Penguin.Persistence.Abstractions.Interfaces
 {
@@ -19,13 +16,6 @@ namespace Penguin.Persistence.Abstractions.Interfaces
         IQueryable<T> All { get; }
 
         /// <summary>
-        /// This should perform all of the same data filtering and population as All, however it should
-        /// do all of this specific to the derived type and return the derived type as though it was a top
-        /// level persistence context
-        /// </summary>
-        IQueryable<TDerived> OfType<TDerived>() where TDerived : T;
-
-        /// <summary>
         /// This should add a new object to the data store, or update an existing matching object
         /// </summary>
         /// <param name="o">The object(s) to add or update</param>
@@ -40,5 +30,12 @@ namespace Penguin.Persistence.Abstractions.Interfaces
         /// This should return any object with a key that matches the provided
         /// </summary>
         new T Find(object Key);
+
+        /// <summary>
+        /// This should perform all of the same data filtering and population as All, however it should
+        /// do all of this specific to the derived type and return the derived type as though it was a top
+        /// level persistence context
+        /// </summary>
+        IQueryable<TDerived> OfType<TDerived>() where TDerived : T;
     }
 }

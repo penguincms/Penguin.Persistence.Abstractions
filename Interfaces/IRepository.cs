@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 
 namespace Penguin.Persistence.Abstractions.Interfaces
 {
-
-
     /// <summary>
     /// A nongeneric representation of a repository allowing for access without knowing the underlying data type
     /// </summary>
@@ -31,10 +29,22 @@ namespace Penguin.Persistence.Abstractions.Interfaces
         void Add(params object[] o);
 
         /// <summary>
+        /// Resets the object unique fields and adds a copy to the context
+        /// </summary>
+        /// <param name="o">The object to copy and add</param>
+        void AddCopy(object o);
+
+        /// <summary>
         /// This should add a new object to the data store, or update an existing matching object
         /// </summary>
         /// <param name="o">The object(s) to add or update</param>
         void AddOrUpdate(params object[] o);
+
+        /// <summary>
+        /// Resets the object unique fields and adds or updates a copy to the context
+        /// </summary>
+        /// <param name="o">The object to copy and add</param>
+        void AddOrUpdateCopy(object o);
 
         /// <summary>
         /// If all WriteContexts have been deregistered, this should persist any changes to the underlying data store
@@ -61,6 +71,12 @@ namespace Penguin.Persistence.Abstractions.Interfaces
         List<object> Find();
 
         /// <summary>
+        /// Creates a shallow clone of an object with new keys
+        /// </summary>
+        /// <param name="o">The object to clone</param>
+        object ShallowClone(object o);
+
+        /// <summary>
         /// This should update any objects that already exist in the underlying data store
         /// </summary>
         /// <param name="o">The objects to update from the underlying data store</param>
@@ -79,67 +95,5 @@ namespace Penguin.Persistence.Abstractions.Interfaces
         /// </summary>
         /// <returns> a new write context for the underlying persistence context</returns>
         IWriteContext WriteContext();
-
-        /// <summary>
-        /// Resets the object unique fields and adds a copy to the context
-        /// </summary>
-        /// <param name="o">The object to copy and add</param>
-        void AddCopy(object o);
-
-        /// <summary>
-        /// Resets the object unique fields and adds or updates a copy to the context
-        /// </summary>
-        /// <param name="o">The object to copy and add</param>
-        void AddOrUpdateCopy(object o);
-
-        /// <summary>
-        /// Creates a shallow clone of an object with new keys
-        /// </summary>
-        /// <param name="o">The object to clone</param>
-        object ShallowClone(object o);
-
-    }
-
-    /// <summary>
-    /// An interface intended to allow for access to a persistence context of a given type
-    /// </summary>
-    /// <typeparam name="T">The type of data used in the persistence context</typeparam>
-    public interface IRepositoryI<in T> : IRepository where T : class
-    {
-        /// <summary>
-        /// This should add a new object to the underlying data store
-        /// </summary>
-        /// <param name="o">The object(s) to add to the data store</param>
-        void Add(params T[] o);
-
-        /// <summary>
-        /// This should add a new object to the data store, or update an existing matching object
-        /// </summary>
-        /// <param name="o">The object(s) to add or update</param>
-        void AddOrUpdate(params T[] o);
-
-        /// <summary>
-        /// This should remove objects from the underlying data store, or make them inaccessible (if deleting is not prefered)
-        /// </summary>
-        /// <param name="o">The object(s) to remove from the data store</param>
-        void Delete(params T[] o);
-
-        /// <summary>
-        /// This should update any objects that already exist in the underlying data store
-        /// </summary>
-        /// <param name="o">The objects to update from the underlying data store</param>
-        void Update(params T[] o);
-    }
-
-    /// <summary>
-    /// An interface intended to allow for access to a persistence context of a given type
-    /// </summary>
-    /// <typeparam name="T">The type of data used in the persistence context</typeparam>
-    public interface IRepositoryO<out T> : IRepository where T : class
-    {
-        /// <summary>
-        /// Returns the (possibly) overridden IQueriable used to access database by the underlying persistence context
-        /// </summary>
-        new IQueryable<T> All { get; }
     }
 }

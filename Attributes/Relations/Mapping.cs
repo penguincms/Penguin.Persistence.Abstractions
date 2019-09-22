@@ -9,27 +9,6 @@ using System.Reflection;
 namespace Penguin.Persistence.Abstractions.Attributes.Relations
 {
     /// <summary>
-    /// A collection of data required to define one end of a two ended mapping
-    /// </summary>
-    public class MappingEnd
-    {
-        /// <summary>
-        /// The primary ID for the class used for declaring mapping tables
-        /// </summary>
-        public string Key { get; set; }
-
-        /// <summary>
-        /// The property that forms the link between the classes
-        /// </summary>
-        public string Property { get; set; }
-
-        /// <summary>
-        /// The type of the class holding this end of the relationship
-        /// </summary>
-        public Type Type { get; set; }
-    }
-
-    /// <summary>
     /// Contains information defining both ends of a relationship mapping
     /// </summary>
     public class Mapping
@@ -69,23 +48,6 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         /// </summary>
         public Mapping SetMapping { get; internal set; }
 
-        private static bool CheckPropertyAssignment(PropertyInfo toCheck, Type target)
-        {
-            Type leftType;
-            Type rightType;
-
-            if(toCheck.PropertyType.IsCollection() && target.IsCollection())
-            {
-                leftType = toCheck.PropertyType.GetCollectionType();
-                rightType = target.GetCollectionType();
-            } else
-            {
-                leftType = toCheck.PropertyType;
-                rightType = target;
-            }
-
-            return leftType.IsAssignableFrom(rightType);
-        }
         /// <summary>
         /// Gets the mapping data for this relationship by attempting to fill in any undefined values
         /// </summary>
@@ -116,7 +78,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
                 List<PropertyInfo> rightProperties = mapping.Right.Type.GetProperties()
                                                                        .Where(p => CheckPropertyAssignment(p, searchType))
                                                                        .ToList();
-                if(!rightProperties.Any())
+                if (!rightProperties.Any())
                 {
                     rightProperties = mapping.Right.Type.GetProperties(BindingFlags.NonPublic | BindingFlags.Instance)
                                              .Where(p => CheckPropertyAssignment(p, searchType))
@@ -199,5 +161,45 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
                 return null;
             }
         }
+
+        private static bool CheckPropertyAssignment(PropertyInfo toCheck, Type target)
+        {
+            Type leftType;
+            Type rightType;
+
+            if (toCheck.PropertyType.IsCollection() && target.IsCollection())
+            {
+                leftType = toCheck.PropertyType.GetCollectionType();
+                rightType = target.GetCollectionType();
+            }
+            else
+            {
+                leftType = toCheck.PropertyType;
+                rightType = target;
+            }
+
+            return leftType.IsAssignableFrom(rightType);
+        }
+    }
+
+    /// <summary>
+    /// A collection of data required to define one end of a two ended mapping
+    /// </summary>
+    public class MappingEnd
+    {
+        /// <summary>
+        /// The primary ID for the class used for declaring mapping tables
+        /// </summary>
+        public string Key { get; set; }
+
+        /// <summary>
+        /// The property that forms the link between the classes
+        /// </summary>
+        public string Property { get; set; }
+
+        /// <summary>
+        /// The type of the class holding this end of the relationship
+        /// </summary>
+        public Type Type { get; set; }
     }
 }

@@ -308,26 +308,6 @@
             Put on a private property to specify that it SHOULD be mapped
             </summary>
         </member>
-        <member name="T:Penguin.Persistence.Abstractions.Attributes.Relations.MappingEnd">
-            <summary>
-            A collection of data required to define one end of a two ended mapping
-            </summary>
-        </member>
-        <member name="P:Penguin.Persistence.Abstractions.Attributes.Relations.MappingEnd.Key">
-            <summary>
-            The primary ID for the class used for declaring mapping tables
-            </summary>
-        </member>
-        <member name="P:Penguin.Persistence.Abstractions.Attributes.Relations.MappingEnd.Property">
-            <summary>
-            The property that forms the link between the classes
-            </summary>
-        </member>
-        <member name="P:Penguin.Persistence.Abstractions.Attributes.Relations.MappingEnd.Type">
-            <summary>
-            The type of the class holding this end of the relationship
-            </summary>
-        </member>
         <member name="T:Penguin.Persistence.Abstractions.Attributes.Relations.Mapping">
             <summary>
             Contains information defining both ends of a relationship mapping
@@ -391,6 +371,26 @@
             </summary>
             <param name="type">The type to get the key for</param>
             <returns>The key for that property, or null if not defined</returns>
+        </member>
+        <member name="T:Penguin.Persistence.Abstractions.Attributes.Relations.MappingEnd">
+            <summary>
+            A collection of data required to define one end of a two ended mapping
+            </summary>
+        </member>
+        <member name="P:Penguin.Persistence.Abstractions.Attributes.Relations.MappingEnd.Key">
+            <summary>
+            The primary ID for the class used for declaring mapping tables
+            </summary>
+        </member>
+        <member name="P:Penguin.Persistence.Abstractions.Attributes.Relations.MappingEnd.Property">
+            <summary>
+            The property that forms the link between the classes
+            </summary>
+        </member>
+        <member name="P:Penguin.Persistence.Abstractions.Attributes.Relations.MappingEnd.Type">
+            <summary>
+            The type of the class holding this end of the relationship
+            </summary>
         </member>
         <member name="T:Penguin.Persistence.Abstractions.Attributes.Relations.NotMappedAttribute">
             <summary>
@@ -635,16 +635,6 @@
             This should return a true if the object used to construct this persistence context has an associated data store (ex DbSet)
             </summary>
         </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.Find(System.Object[])">
-            <summary>
-            This should return any object with a key in the provided list
-            </summary>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.Find(System.Object)">
-            <summary>
-            This should return any object with a key that matches the provided
-            </summary>
-        </member>
         <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.Add(System.Object[])">
             <summary>
             This should add a new object to the underlying data store
@@ -687,11 +677,26 @@
             </summary>
             <param name="context">The IWriteContext that has finished making changes</param>
         </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.Find(System.Object[])">
+            <summary>
+            This should return any object with a key in the provided list
+            </summary>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.Find(System.Object)">
+            <summary>
+            This should return any object with a key that matches the provided
+            </summary>
+        </member>
         <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.GetWriteContexts">
             <summary>
             This should return an array of any IWriteContexts that are currently registered by this persistence context
             </summary>
             <returns>An array of any IWriteContexts that are currently registered by this persistence context</returns>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.Migrate">
+            <summary>
+            This should perform any setup required for the persistence context to function
+            </summary>
         </member>
         <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.Update(System.Object[])">
             <summary>
@@ -717,13 +722,6 @@
             that require any form of data filtering
             </summary>
         </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext`1.OfType``1">
-            <summary>
-            This should perform all of the same data filtering and population as All, however it should
-            do all of this specific to the derived type and return the derived type as though it was a top
-            level persistence context
-            </summary>
-        </member>
         <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext`1.AddOrUpdate(`0[])">
             <summary>
             This should add a new object to the data store, or update an existing matching object
@@ -738,6 +736,13 @@
         <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext`1.Find(System.Object)">
             <summary>
             This should return any object with a key that matches the provided
+            </summary>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext`1.OfType``1">
+            <summary>
+            This should perform all of the same data filtering and population as All, however it should
+            do all of this specific to the derived type and return the derived type as though it was a top
+            level persistence context
             </summary>
         </member>
         <member name="T:Penguin.Persistence.Abstractions.Interfaces.IRepository">
@@ -762,11 +767,23 @@
             </summary>
             <param name="o">The object(s) to add to the data store</param>
         </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepository.AddCopy(System.Object)">
+            <summary>
+            Resets the object unique fields and adds a copy to the context
+            </summary>
+            <param name="o">The object to copy and add</param>
+        </member>
         <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepository.AddOrUpdate(System.Object[])">
             <summary>
             This should add a new object to the data store, or update an existing matching object
             </summary>
             <param name="o">The object(s) to add or update</param>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepository.AddOrUpdateCopy(System.Object)">
+            <summary>
+            Resets the object unique fields and adds or updates a copy to the context
+            </summary>
+            <param name="o">The object to copy and add</param>
         </member>
         <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepository.Commit(Penguin.Persistence.Abstractions.Interfaces.IWriteContext)">
             <summary>
@@ -792,6 +809,12 @@
             </summary>
             <returns>Every object from the repository</returns>
         </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepository.ShallowClone(System.Object)">
+            <summary>
+            Creates a shallow clone of an object with new keys
+            </summary>
+            <param name="o">The object to clone</param>
+        </member>
         <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepository.Update(System.Object[])">
             <summary>
             This should update any objects that already exist in the underlying data store
@@ -811,24 +834,6 @@
             Returns a new write context for the underlying persistence context
             </summary>
             <returns> a new write context for the underlying persistence context</returns>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepository.AddCopy(System.Object)">
-            <summary>
-            Resets the object unique fields and adds a copy to the context
-            </summary>
-            <param name="o">The object to copy and add</param>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepository.AddOrUpdateCopy(System.Object)">
-            <summary>
-            Resets the object unique fields and adds or updates a copy to the context
-            </summary>
-            <param name="o">The object to copy and add</param>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepository.ShallowClone(System.Object)">
-            <summary>
-            Creates a shallow clone of an object with new keys
-            </summary>
-            <param name="o">The object to clone</param>
         </member>
         <member name="T:Penguin.Persistence.Abstractions.Interfaces.IRepositoryI`1">
             <summary>
@@ -882,11 +887,6 @@
             The persistence context containing the data this repository accesses
             </summary>
         </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepository`1.OfType``1">
-            <summary>
-            An accessor for only derived types
-            </summary>
-        </member>
         <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepository`1.AddCopy(`0)">
             <summary>
             Resets the object unique fields and adds a copy to the context
@@ -898,6 +898,11 @@
             Resets the object unique fields and adds or updates a copy to the context
             </summary>
             <param name="o">The object to copy and add</param>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepository`1.OfType``1">
+            <summary>
+            An accessor for only derived types
+            </summary>
         </member>
         <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepository`1.ShallowClone(`0)">
             <summary>
@@ -1070,6 +1075,26 @@
             </summary>
             <param name="context">The IWriteContext that has finished making changes</param>
         </member>
+        <member name="M:Penguin.Persistence.Abstractions.PersistenceContext`1.Find(System.Object[])">
+            <summary>
+            This should return any object with a key in the provided list
+            </summary>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.PersistenceContext`1.Find(System.Object)">
+            <summary>
+            This should return any object with a key that matches the provided
+            </summary>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.PersistenceContext`1.Penguin#Persistence#Abstractions#Interfaces#IPersistenceContext#Find(System.Object[])">
+            <summary>
+            This should return any object with a key in the provided list
+            </summary>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.PersistenceContext`1.Penguin#Persistence#Abstractions#Interfaces#IPersistenceContext#Find(System.Object)">
+            <summary>
+            This should return any object with a key that matches the provided
+            </summary>
+        </member>
         <member name="M:Penguin.Persistence.Abstractions.PersistenceContext`1.GetEnumerator">
             <summary>
             This returns the Enumerator for the underlying IQueriable
@@ -1100,26 +1125,6 @@
             This should spawn a new IWriteContext instance that is pre-registered with this persistence context
             </summary>
             <returns>A new IWriteContext instance that is pre-registered with this persistence context</returns>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.PersistenceContext`1.Find(System.Object[])">
-            <summary>
-            This should return any object with a key in the provided list
-            </summary>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.PersistenceContext`1.Find(System.Object)">
-            <summary>
-            This should return any object with a key that matches the provided
-            </summary>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.PersistenceContext`1.Penguin#Persistence#Abstractions#Interfaces#IPersistenceContext#Find(System.Object[])">
-            <summary>
-            This should return any object with a key in the provided list
-            </summary>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.PersistenceContext`1.Penguin#Persistence#Abstractions#Interfaces#IPersistenceContext#Find(System.Object)">
-            <summary>
-            This should return any object with a key that matches the provided
-            </summary>
         </member>
         <member name="P:Penguin.Persistence.Abstractions.PersistenceContext`1.AdditionalDataSources">
             <summary>
