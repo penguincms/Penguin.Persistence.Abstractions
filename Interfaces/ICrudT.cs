@@ -10,7 +10,7 @@ namespace Penguin.Persistence.Abstractions.Interfaces
     /// A typed interface for basic crud operations
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public interface ICrud<T> : ICrud
+    public interface ICrud<T> : ICrud, IQueryable<T>
     {
         /// <summary>
         /// This should access the underlying queriable data provider, and be overridden for persistence contexts
