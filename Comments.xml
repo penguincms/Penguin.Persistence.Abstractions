@@ -748,42 +748,6 @@
             that require any form of data filtering
             </summary>
         </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrud`1.Add(`0)">
-            <summary>
-            This should add a new object to the underlying data store
-            </summary>
-            <param name="o">The object(s) to add to the data store</param>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrud`1.AddOrUpdate(`0)">
-            <summary>
-            This should add a new object to the data store, or update an existing matching object
-            </summary>
-            <param name="o">The object(s) to add or update</param>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrud`1.AddOrUpdateRange(System.Collections.Generic.IEnumerable{`0})">
-            <summary>
-            This should add a new object to the data store, or update an existing matching object
-            </summary>
-            <param name="o">The object(s) to add or update</param>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrud`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
-            <summary>
-            This should add a new object to the underlying data store
-            </summary>
-            <param name="o">The object(s) to add to the data store</param>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrud`1.Delete(`0)">
-            <summary>
-            This should remove objects from the underlying data store, or make them inaccessible (if deleting is not prefered)
-            </summary>
-            <param name="o">The object(s) to remove from the data store</param>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrud`1.DeleteRange(System.Collections.Generic.IEnumerable{`0})">
-            <summary>
-            This should remove objects from the underlying data store, or make them inaccessible (if deleting is not prefered)
-            </summary>
-            <param name="o">The object(s) to remove from the data store</param>
-        </member>
         <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrud`1.Find(System.Object)">
             <summary>
             This should return any object with a key that matches the provided
@@ -793,18 +757,6 @@
             <summary>
             This should return any object with a key in the provided list
             </summary>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrud`1.Update(`0)">
-            <summary>
-            This should update existing objects in the data store, but not add new ones
-            </summary>
-            <param name="o">The object(s) to update</param>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrud`1.UpdateRange(System.Collections.Generic.IEnumerable{`0})">
-            <summary>
-            This should update existing objects in the data store, but not add new ones
-            </summary>
-            <param name="o">The object(s) to update</param>
         </member>
         <member name="T:Penguin.Persistence.Abstractions.Interfaces.IManageWriteContexts">
             <summary>
