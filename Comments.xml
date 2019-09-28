@@ -625,6 +625,203 @@
             <param name="property">The property to retrieve the name from</param>
             <returns>The proper display name for the property</returns>
         </member>
+        <member name="T:Penguin.Persistence.Abstractions.Interfaces.ICrud">
+            <summary>
+            Supports basic crud operations
+            </summary>
+        </member>
+        <member name="P:Penguin.Persistence.Abstractions.Interfaces.ICrud.All">
+            <summary>
+            This should access the underlying queriable data provider, and be overridden for persistence contexts
+            that require any form of data filtering
+            </summary>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrud.Add(System.Object)">
+            <summary>
+            This should add a new object to the underlying data store
+            </summary>
+            <param name="o">The object(s) to add to the data store</param>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrud.AddOrUpdate(System.Object)">
+            <summary>
+            This should add a new object to the data store, or update an existing matching object
+            </summary>
+            <param name="o">The object(s) to add or update</param>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrud.AddOrUpdateRange(System.Collections.IEnumerable)">
+            <summary>
+            This should add a new object to the data store, or update an existing matching object
+            </summary>
+            <param name="o">The object(s) to add or update</param>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrud.AddRange(System.Collections.IEnumerable)">
+            <summary>
+            This should add a new object to the underlying data store
+            </summary>
+            <param name="o">The object(s) to add to the data store</param>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrud.Delete(System.Object)">
+            <summary>
+            This should remove objects from the underlying data store, or make them inaccessible (if deleting is not prefered)
+            </summary>
+            <param name="o">The object(s) to remove from the data store</param>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrud.DeleteRange(System.Collections.IEnumerable)">
+            <summary>
+            This should remove objects from the underlying data store, or make them inaccessible (if deleting is not prefered)
+            </summary>
+            <param name="o">The object(s) to remove from the data store</param>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrud.Find(System.Object)">
+            <summary>
+            This should return any object with a key that matches the provided
+            </summary>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrud.FindRange(System.Collections.IEnumerable)">
+            <summary>
+            This should return any object with a key in the provided list
+            </summary>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrud.Update(System.Object)">
+            <summary>
+            This should update any objects that already exist in the underlying data store
+            </summary>
+            <param name="o">The objects to update from the underlying data store</param>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrud.UpdateRange(System.Collections.IEnumerable)">
+            <summary>
+            This should update any objects that already exist in the underlying data store
+            </summary>
+            <param name="o">The objects to update from the underlying data store</param>
+        </member>
+        <member name="T:Penguin.Persistence.Abstractions.Interfaces.ICrudI`1">
+            <summary>
+            A typed interface for basic crud operations
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrudI`1.Add(`0)">
+            <summary>
+            This should add a new object to the underlying data store
+            </summary>
+            <param name="o">The object(s) to add to the data store</param>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrudI`1.AddOrUpdate(`0)">
+            <summary>
+            This should add a new object to the data store, or update an existing matching object
+            </summary>
+            <param name="o">The object(s) to add or update</param>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrudI`1.AddOrUpdateRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            This should add a new object to the data store, or update an existing matching object
+            </summary>
+            <param name="o">The object(s) to add or update</param>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrudI`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            This should add a new object to the underlying data store
+            </summary>
+            <param name="o">The object(s) to add to the data store</param>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrudI`1.Delete(`0)">
+            <summary>
+            This should remove objects from the underlying data store, or make them inaccessible (if deleting is not prefered)
+            </summary>
+            <param name="o">The object(s) to remove from the data store</param>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrudI`1.DeleteRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            This should remove objects from the underlying data store, or make them inaccessible (if deleting is not prefered)
+            </summary>
+            <param name="o">The object(s) to remove from the data store</param>
+        </member>
+        <member name="T:Penguin.Persistence.Abstractions.Interfaces.ICrud`1">
+            <summary>
+            A typed interface for basic crud operations
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Penguin.Persistence.Abstractions.Interfaces.ICrud`1.All">
+            <summary>
+            This should access the underlying queriable data provider, and be overridden for persistence contexts
+            that require any form of data filtering
+            </summary>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrud`1.Add(`0)">
+            <summary>
+            This should add a new object to the underlying data store
+            </summary>
+            <param name="o">The object(s) to add to the data store</param>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrud`1.AddOrUpdate(`0)">
+            <summary>
+            This should add a new object to the data store, or update an existing matching object
+            </summary>
+            <param name="o">The object(s) to add or update</param>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrud`1.AddOrUpdateRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            This should add a new object to the data store, or update an existing matching object
+            </summary>
+            <param name="o">The object(s) to add or update</param>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrud`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            This should add a new object to the underlying data store
+            </summary>
+            <param name="o">The object(s) to add to the data store</param>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrud`1.Delete(`0)">
+            <summary>
+            This should remove objects from the underlying data store, or make them inaccessible (if deleting is not prefered)
+            </summary>
+            <param name="o">The object(s) to remove from the data store</param>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrud`1.DeleteRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            This should remove objects from the underlying data store, or make them inaccessible (if deleting is not prefered)
+            </summary>
+            <param name="o">The object(s) to remove from the data store</param>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrud`1.Find(System.Object)">
+            <summary>
+            This should return any object with a key that matches the provided
+            </summary>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrud`1.FindRange(System.Collections.IEnumerable)">
+            <summary>
+            This should return any object with a key in the provided list
+            </summary>
+        </member>
+        <member name="T:Penguin.Persistence.Abstractions.Interfaces.IManageWriteContexts">
+            <summary>
+            Supports the basic operations required to use write contexts
+            </summary>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IManageWriteContexts.CancelWrite">
+            <summary>
+            This should clear out all open object references and close the write contexts without commiting any changes
+            </summary>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IManageWriteContexts.Commit(Penguin.Persistence.Abstractions.Interfaces.IWriteContext)">
+            <summary>
+            If all WriteContexts have been deregistered, this should persist any changes to the underlying data store
+            </summary>
+            <param name="writeContext">The IWriteContext that has finished making changes</param>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IManageWriteContexts.CommitASync(Penguin.Persistence.Abstractions.Interfaces.IWriteContext)">
+            <summary>
+            If all WriteContexts have been deregistered, this should persist any changes to the underlying data store in an ASYNC manner
+            </summary>
+            <param name="writeContext">The IWriteContext that has finished making changes</param>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IManageWriteContexts.WriteContext">
+            <summary>
+            Returns a new write context for the underlying persistence context
+            </summary>
+            <returns> a new write context for the underlying persistence context</returns>
+        </member>
         <member name="T:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext">
             <summary>
             A nongeneric interface for a persistence context to allow access to data without knowing the underlying type
@@ -635,64 +832,11 @@
             This should return a true if the object used to construct this persistence context has an associated data store (ex DbSet)
             </summary>
         </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.Add(System.Object)">
-            <summary>
-            This should add a new object to the underlying data store
-            </summary>
-            <param name="o">The object(s) to add to the data store</param>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.AddOrUpdate(System.Object)">
-            <summary>
-            This should add a new object to the data store, or update an existing matching object
-            </summary>
-            <param name="o">The object(s) to add or update</param>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.AddOrUpdateRange(System.Collections.IEnumerable)">
-            <summary>
-            This should add a new object to the data store, or update an existing matching object
-            </summary>
-            <param name="o">The object(s) to add or update</param>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.AddRange(System.Collections.IEnumerable)">
-            <summary>
-            This should add a new object to the underlying data store
-            </summary>
-            <param name="o">The object(s) to add to the data store</param>
-        </member>
         <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.BeginWrite(Penguin.Persistence.Abstractions.Interfaces.IWriteContext)">
             <summary>
             This should add the passed in IWriteContext to the list of open contexts, and enable persistence
             </summary>
             <param name="context">The IWriteContext that will be controlling this persistence instance</param>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.CancelWrite">
-            <summary>
-            This should clear out all open object references and close the write contexts without commiting any changes
-            </summary>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.Commit(Penguin.Persistence.Abstractions.Interfaces.IWriteContext)">
-            <summary>
-            If all WriteContexts have been deregistered, this should persist any changes to the underlying data store
-            </summary>
-            <param name="context">The IWriteContext that has finished making changes</param>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.CommitASync(Penguin.Persistence.Abstractions.Interfaces.IWriteContext)">
-            <summary>
-            If all WriteContexts have been deregistered, this should persist any changes to the underlying data store in an ASYNC manner
-            </summary>
-            <param name="context">The IWriteContext that has finished making changes</param>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.Delete(System.Object)">
-            <summary>
-            This should remove objects from the underlying data store, or make them inaccessible (if deleting is not prefered)
-            </summary>
-            <param name="o">The object(s) to remove from the data store</param>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.DeleteRange(System.Collections.IEnumerable)">
-            <summary>
-            This should remove objects from the underlying data store, or make them inaccessible (if deleting is not prefered)
-            </summary>
-            <param name="o">The object(s) to remove from the data store</param>
         </member>
         <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.EndWrite(Penguin.Persistence.Abstractions.Interfaces.IWriteContext)">
             <summary>
@@ -701,39 +845,11 @@
             </summary>
             <param name="context">The IWriteContext that has finished making changes</param>
         </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.Find(System.Object)">
-            <summary>
-            This should return any object with a key that matches the provided
-            </summary>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.FindRange(System.Collections.IEnumerable)">
-            <summary>
-            This should return any object with a key in the provided list
-            </summary>
-        </member>
         <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.GetWriteContexts">
             <summary>
             This should return an array of any IWriteContexts that are currently registered by this persistence context
             </summary>
             <returns>An array of any IWriteContexts that are currently registered by this persistence context</returns>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.Update(System.Object)">
-            <summary>
-            This should update any objects that already exist in the underlying data store
-            </summary>
-            <param name="o">The objects to update from the underlying data store</param>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.UpdateRange(System.Collections.IEnumerable)">
-            <summary>
-            This should update any objects that already exist in the underlying data store
-            </summary>
-            <param name="o">The objects to update from the underlying data store</param>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext.WriteContext">
-            <summary>
-            This should spawn a new IWriteContext instance that is pre-registered with this persistence context
-            </summary>
-            <returns>A new IWriteContext instance that is pre-registered with this persistence context</returns>
         </member>
         <member name="T:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContextMigrator">
             <summary>
@@ -751,58 +867,6 @@
             </summary>
             <typeparam name="T">The type of object being specifically referenced to by this instance</typeparam>
         </member>
-        <member name="P:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext`1.All">
-            <summary>
-            This should access the underlying queriable data provider, and be overridden for persistence contexts
-            that require any form of data filtering
-            </summary>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext`1.Add(`0)">
-            <summary>
-            This should add a new object to the underlying data store
-            </summary>
-            <param name="o">The object(s) to add to the data store</param>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext`1.AddOrUpdate(`0)">
-            <summary>
-            This should add a new object to the data store, or update an existing matching object
-            </summary>
-            <param name="o">The object(s) to add or update</param>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext`1.AddOrUpdateRange(System.Collections.Generic.IEnumerable{`0})">
-            <summary>
-            This should add a new object to the data store, or update an existing matching object
-            </summary>
-            <param name="o">The object(s) to add or update</param>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
-            <summary>
-            This should add a new object to the underlying data store
-            </summary>
-            <param name="o">The object(s) to add to the data store</param>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext`1.Delete(`0)">
-            <summary>
-            This should remove objects from the underlying data store, or make them inaccessible (if deleting is not prefered)
-            </summary>
-            <param name="o">The object(s) to remove from the data store</param>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext`1.DeleteRange(System.Collections.Generic.IEnumerable{`0})">
-            <summary>
-            This should remove objects from the underlying data store, or make them inaccessible (if deleting is not prefered)
-            </summary>
-            <param name="o">The object(s) to remove from the data store</param>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext`1.Find(System.Object)">
-            <summary>
-            This should return any object with a key that matches the provided
-            </summary>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext`1.FindRange(System.Collections.IEnumerable)">
-            <summary>
-            This should return any object with a key in the provided list
-            </summary>
-        </member>
         <member name="M:Penguin.Persistence.Abstractions.Interfaces.IPersistenceContext`1.OfType``1">
             <summary>
             This should perform all of the same data filtering and population as All, however it should
@@ -815,22 +879,11 @@
             A nongeneric representation of a repository allowing for access without knowing the underlying data type
             </summary>
         </member>
-        <member name="P:Penguin.Persistence.Abstractions.Interfaces.IRepository.All">
-            <summary>
-            Returns the (possibly) overridden IQueriable used to access database by the underlying persistence context
-            </summary>
-        </member>
         <member name="P:Penguin.Persistence.Abstractions.Interfaces.IRepository.IsValid">
             <summary>
             Returns a bool indicating whether or not the underlying persistence context contains a set for storing the
             type represented by this repository
             </summary>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepository.Add(System.Object[])">
-            <summary>
-            This should add a new object to the underlying data store
-            </summary>
-            <param name="o">The object(s) to add to the data store</param>
         </member>
         <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepository.AddCopy(System.Object)">
             <summary>
@@ -838,53 +891,17 @@
             </summary>
             <param name="o">The object to copy and add</param>
         </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepository.AddOrUpdate(System.Object[])">
-            <summary>
-            This should add a new object to the data store, or update an existing matching object
-            </summary>
-            <param name="o">The object(s) to add or update</param>
-        </member>
         <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepository.AddOrUpdateCopy(System.Object)">
             <summary>
             Resets the object unique fields and adds or updates a copy to the context
             </summary>
             <param name="o">The object to copy and add</param>
         </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepository.Commit(Penguin.Persistence.Abstractions.Interfaces.IWriteContext)">
-            <summary>
-            If all WriteContexts have been deregistered, this should persist any changes to the underlying data store
-            </summary>
-            <param name="writeContext">The IWriteContext that has finished making changes</param>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepository.CommitASync(Penguin.Persistence.Abstractions.Interfaces.IWriteContext)">
-            <summary>
-            If all WriteContexts have been deregistered, this should persist any changes to the underlying data store in an ASYNC manner
-            </summary>
-            <param name="writeContext">The IWriteContext that has finished making changes</param>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepository.Delete(System.Object[])">
-            <summary>
-            This should remove objects from the underlying data store, or make them inaccessible (if deleting is not prefered)
-            </summary>
-            <param name="o">The object(s) to remove from the data store</param>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepository.Find">
-            <summary>
-            Should return every object from the repository
-            </summary>
-            <returns>Every object from the repository</returns>
-        </member>
         <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepository.ShallowClone(System.Object)">
             <summary>
             Creates a shallow clone of an object with new keys
             </summary>
             <param name="o">The object to clone</param>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepository.Update(System.Object[])">
-            <summary>
-            This should update any objects that already exist in the underlying data store
-            </summary>
-            <param name="o">The objects to update from the underlying data store</param>
         </member>
         <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepository.Where``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
             <summary>
@@ -893,53 +910,6 @@
             <typeparam name="T">An assumed type/base for this non-generic instance of the repository</typeparam>
             <param name="predicate">The Expression to pass to the underlying IQueriable</param>
             <returns>The results of evaluating the expression against the underlying IQueriable</returns>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepository.WriteContext">
-            <summary>
-            Returns a new write context for the underlying persistence context
-            </summary>
-            <returns> a new write context for the underlying persistence context</returns>
-        </member>
-        <member name="T:Penguin.Persistence.Abstractions.Interfaces.IRepositoryI`1">
-            <summary>
-            An interface intended to allow for access to a persistence context of a given type
-            </summary>
-            <typeparam name="T">The type of data used in the persistence context</typeparam>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepositoryI`1.Add(`0[])">
-            <summary>
-            This should add a new object to the underlying data store
-            </summary>
-            <param name="o">The object(s) to add to the data store</param>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepositoryI`1.AddOrUpdate(`0[])">
-            <summary>
-            This should add a new object to the data store, or update an existing matching object
-            </summary>
-            <param name="o">The object(s) to add or update</param>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepositoryI`1.Delete(`0[])">
-            <summary>
-            This should remove objects from the underlying data store, or make them inaccessible (if deleting is not prefered)
-            </summary>
-            <param name="o">The object(s) to remove from the data store</param>
-        </member>
-        <member name="M:Penguin.Persistence.Abstractions.Interfaces.IRepositoryI`1.Update(`0[])">
-            <summary>
-            This should update any objects that already exist in the underlying data store
-            </summary>
-            <param name="o">The objects to update from the underlying data store</param>
-        </member>
-        <member name="T:Penguin.Persistence.Abstractions.Interfaces.IRepositoryO`1">
-            <summary>
-            An interface intended to allow for access to a persistence context of a given type
-            </summary>
-            <typeparam name="T">The type of data used in the persistence context</typeparam>
-        </member>
-        <member name="P:Penguin.Persistence.Abstractions.Interfaces.IRepositoryO`1.All">
-            <summary>
-            Returns the (possibly) overridden IQueriable used to access database by the underlying persistence context
-            </summary>
         </member>
         <member name="T:Penguin.Persistence.Abstractions.Interfaces.IRepository`1">
             <summary>

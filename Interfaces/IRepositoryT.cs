@@ -7,7 +7,7 @@ namespace Penguin.Persistence.Abstractions.Interfaces
     /// </summary>
     /// <typeparam name="T">The type of data used in the persistence context</typeparam>
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Naming", "CA1710:Identifiers should have correct suffix", Justification = "<Pending>")]
-    public interface IRepository<T> : IRepositoryI<T>, IRepositoryO<T>, IRepository, IQueryable<T> where T : class
+    public interface IRepository<T> : ICrudI<T>, ICrud<T>, IRepository, IQueryable<T> where T : class
     {
         /// <summary>
         /// The persistence context containing the data this repository accesses
