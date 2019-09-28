@@ -9,7 +9,7 @@ namespace Penguin.Persistence.Abstractions.Interfaces
     /// </summary>
     /// <typeparam name="T">The type of object being specifically referenced to by this instance</typeparam>
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Naming", "CA1710:Identifiers should have correct suffix", Justification = "<Pending>")]
-    public interface IPersistenceContext<T> : IQueryable<T>, IPersistenceContext where T : class
+    public interface IPersistenceContext<T> : ICrud<T>, IPersistenceContext where T : class
     {
         /// <summary>
         /// This should perform all of the same data filtering and population as All, however it should
