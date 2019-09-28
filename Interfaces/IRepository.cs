@@ -68,7 +68,7 @@ namespace Penguin.Persistence.Abstractions.Interfaces
         /// Should return every object from the repository
         /// </summary>
         /// <returns>Every object from the repository</returns>
-        List<object> Find();
+        IEnumerable<object> Find();
 
         /// <summary>
         /// Creates a shallow clone of an object with new keys

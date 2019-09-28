@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Penguin.Persistence.Abstractions.Interfaces
+﻿namespace Penguin.Persistence.Abstractions.Interfaces
 {
     /// <summary>
     /// An interface designed to perform any migrations required for the persistence context
