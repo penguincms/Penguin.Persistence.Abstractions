@@ -63,5 +63,17 @@ namespace Penguin.Persistence.Abstractions.Interfaces
         /// This should return any object with a key in the provided list
         /// </summary>
         new IEnumerable<T> FindRange(IEnumerable Keys);
+
+        /// <summary>
+        /// This should update existing objects in the data store, but not add new ones
+        /// </summary>
+        /// <param name="o">The object(s) to update</param>
+        void Update(T o);
+
+        /// <summary>
+        /// This should update existing objects in the data store, but not add new ones
+        /// </summary>
+        /// <param name="o">The object(s) to update</param>
+        void UpdateRange(IEnumerable<T> o);
     }
 }

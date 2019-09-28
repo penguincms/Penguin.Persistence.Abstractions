@@ -794,6 +794,18 @@
             This should return any object with a key in the provided list
             </summary>
         </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrud`1.Update(`0)">
+            <summary>
+            This should update existing objects in the data store, but not add new ones
+            </summary>
+            <param name="o">The object(s) to update</param>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Interfaces.ICrud`1.UpdateRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            This should update existing objects in the data store, but not add new ones
+            </summary>
+            <param name="o">The object(s) to update</param>
+        </member>
         <member name="T:Penguin.Persistence.Abstractions.Interfaces.IManageWriteContexts">
             <summary>
             Supports the basic operations required to use write contexts
