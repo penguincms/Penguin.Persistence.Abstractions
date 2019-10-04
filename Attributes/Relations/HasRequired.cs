@@ -5,27 +5,38 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
     /// <summary>
     /// An attribute to denote that a property should be required by the persistence system
     /// </summary>
-    public class HasRequiredAttribute : RelationalAttribute
+    public class HasRequiredAttribute : MappingAttribute
     {
         /// <summary>
-        /// The property name that defines the key referenced
+        /// Constructs a new instance of this attribute
         /// </summary>
-        public string TargetProperty { get; set; }
-
-        /// <summary>
-        /// The type of the object that this property (assumed key) references
-        /// </summary>
-        public Type TargetType { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="targetProperty">The property name that defines the key referenced</param>
-        /// <param name="targetType">The type of the object that this property (assumed key) references</param>
-        public HasRequiredAttribute(string targetProperty, Type targetType = null)
+        public HasRequiredAttribute()
         {
-            TargetProperty = targetProperty;
-            TargetType = targetType;
+            this.SetMapping = new Mapping()
+            {
+            };
         }
+
+        /// <summary>
+        /// Constructs a new instance of this attribute
+        /// </summary>
+        /// <param name="rightProperty">The optional name for the property that links back to this object</param>
+        public HasRequiredAttribute(string rightProperty)
+        {
+            this.SetMapping = new Mapping()
+            {
+                Right = new MappingEnd()
+                {
+                    Property = rightProperty
+                }
+            };
+        }
+
+        /// <summary>
+        /// Returns the expected type of the property that links back to this one
+        /// </summary>
+        /// <param name="LeftPropertyType">The type of the class containing this attribute. Its a one-to-one so it just returns this type</param>
+        /// <returns>The type of the class containing this attribute</returns>
+        public override Type GetRightPropertyType(Type LeftPropertyType) => LeftPropertyType;
     }
 }

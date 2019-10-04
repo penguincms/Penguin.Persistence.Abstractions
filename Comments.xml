@@ -213,22 +213,23 @@
             An attribute to denote that a property should be required by the persistence system
             </summary>
         </member>
-        <member name="P:Penguin.Persistence.Abstractions.Attributes.Relations.HasRequiredAttribute.TargetProperty">
+        <member name="M:Penguin.Persistence.Abstractions.Attributes.Relations.HasRequiredAttribute.#ctor">
             <summary>
-            The property name that defines the key referenced
+            Constructs a new instance of this attribute
             </summary>
         </member>
-        <member name="P:Penguin.Persistence.Abstractions.Attributes.Relations.HasRequiredAttribute.TargetType">
+        <member name="M:Penguin.Persistence.Abstractions.Attributes.Relations.HasRequiredAttribute.#ctor(System.String)">
             <summary>
-            The type of the object that this property (assumed key) references
+            Constructs a new instance of this attribute
             </summary>
+            <param name="rightProperty">The optional name for the property that links back to this object</param>
         </member>
-        <member name="M:Penguin.Persistence.Abstractions.Attributes.Relations.HasRequiredAttribute.#ctor(System.String,System.Type)">
-             <summary>
-            
-             </summary>
-             <param name="targetProperty">The property name that defines the key referenced</param>
-             <param name="targetType">The type of the object that this property (assumed key) references</param>
+        <member name="M:Penguin.Persistence.Abstractions.Attributes.Relations.HasRequiredAttribute.GetRightPropertyType(System.Type)">
+            <summary>
+            Returns the expected type of the property that links back to this one
+            </summary>
+            <param name="LeftPropertyType">The type of the class containing this attribute. Its a one-to-one so it just returns this type</param>
+            <returns>The type of the class containing this attribute</returns>
         </member>
         <member name="T:Penguin.Persistence.Abstractions.Attributes.Relations.ManyToManyAttribute">
             <summary>
@@ -343,7 +344,7 @@
             Sets/gets the mapping data for this relationship as defined when constructed
             </summary>
         </member>
-        <member name="M:Penguin.Persistence.Abstractions.Attributes.Relations.MappingAttribute.GetMapping(System.Reflection.PropertyInfo)">
+        <member name="M:Penguin.Persistence.Abstractions.Attributes.Relations.MappingAttribute.GetMapping(System.Reflection.PropertyInfo,Penguin.Persistence.Abstractions.Enums.RightPropertyRequirement)">
             <summary>
             Gets the mapping data for this relationship by attempting to fill in any undefined values
             </summary>
@@ -390,6 +391,11 @@
         <member name="P:Penguin.Persistence.Abstractions.Attributes.Relations.MappingEnd.Type">
             <summary>
             The type of the class holding this end of the relationship
+            </summary>
+        </member>
+        <member name="P:Penguin.Persistence.Abstractions.Attributes.Relations.MappingEnd.PropertyFound">
+            <summary>
+            True if the mapping end property is defined
             </summary>
         </member>
         <member name="T:Penguin.Persistence.Abstractions.Attributes.Relations.NotMappedAttribute">
@@ -617,6 +623,26 @@
             Constructs a new instance of this attribute
             </summary>
             <param name="length">The maximum string length for the property</param>
+        </member>
+        <member name="T:Penguin.Persistence.Abstractions.Enums.RightPropertyRequirement">
+            <summary>
+            Specifies the requirement for the right property for mappings which may be unidirectional, OR bidirectional ex Required => Optional where the Required type may not contain a reference back to it, at all
+            </summary>
+        </member>
+        <member name="F:Penguin.Persistence.Abstractions.Enums.RightPropertyRequirement.Single">
+            <summary>
+            Will throw an error if there is not exactly one property linking back
+            </summary>
+        </member>
+        <member name="F:Penguin.Persistence.Abstractions.Enums.RightPropertyRequirement.SingleOrNull">
+            <summary>
+            Will allow for a single or missing link back, but will throw an error if multiple are found
+            </summary>
+        </member>
+        <member name="F:Penguin.Persistence.Abstractions.Enums.RightPropertyRequirement.SingleOrNullIfMany">
+            <summary>
+            Will allow for any property matching type, and will return null if many are found
+            </summary>
         </member>
         <member name="M:Penguin.Persistence.Abstractions.Extensions.PropertyInfoExtensions.DisplayName(System.Reflection.PropertyInfo)">
             <summary>

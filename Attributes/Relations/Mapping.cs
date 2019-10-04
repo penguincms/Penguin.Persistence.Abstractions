@@ -1,4 +1,5 @@
 ﻿using Penguin.Persistence.Abstractions.Attributes.Control;
+using Penguin.Persistence.Abstractions.Enums;
 using Penguin.Reflection.Extensions;
 using System;
 using System.Collections;
@@ -34,6 +35,10 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         public Mapping()
         {
             Left = new MappingEnd();
+            
+            //Left property should always be found since its where the attribute is declared
+            Left.PropertyFound = true;
+
             Right = new MappingEnd();
         }
     }
@@ -53,7 +58,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         /// </summary>
         /// <param name="leftProperty">The property on the defined end of the relationship</param>
         /// <returns>The filled in mapping data that may contain assumed definitions if there were unspecified properties</returns>
-        public Mapping GetMapping(PropertyInfo leftProperty)
+        public Mapping GetMapping(PropertyInfo leftProperty, RightPropertyRequirement rightPropertyRequirement = RightPropertyRequirement.Single)
         {
             if (leftProperty is null)
             {
@@ -85,23 +90,40 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
                                              .ToList();
                 }
 
-                if (rightProperties.Count() != 1)
+                if (rightProperties.Count() != 1 && rightPropertyRequirement == RightPropertyRequirement.Single)
                 {
                     throw new Exception($"Did not find exactly 1 property of type {searchType.FullName} on type {mapping.Right.Type.FullName}. Can not imply navigation. Please specify the property name to be used on the other end of this relationship");
                 }
                 else
                 {
-                    this.SetMapping.Right.Property = rightProperties.Single().Name;
+                    if(rightPropertyRequirement == RightPropertyRequirement.SingleOrNull && rightProperties.Count > 1)
+                    {
+                        throw new Exception($"{nameof(RightPropertyRequirement.SingleOrNull)} right property requirement specified, but {rightProperties.Count()} entries matching the property requirements were found");
+                    } else
+                    {
+                        PropertyInfo p = rightProperties.SingleOrDefault();
+
+                        if(p != null)
+                        {
+                            this.SetMapping.Right.PropertyFound = true;
+                            this.SetMapping.Right.Property = p.Name;
+
+                        }
+                    }
                 }
             }
 
             mapping.Right.Property = this.SetMapping.Right.Property;
+            mapping.Right.PropertyFound = this.SetMapping.Right.PropertyFound;
             mapping.Left.Property = leftProperty.Name;
 
             mapping.Left.Key = this.SetMapping.Left.Key ?? GetKey(mapping.Left.Type);
             mapping.Right.Key = this.SetMapping.Right.Key ?? GetKey(mapping.Right.Type);
 
-            mapping.TableName = this.SetMapping.TableName ?? $"{mapping.Left.Type.Name}{mapping.Right.Type.Name}";
+            if (mapping.Right.PropertyFound)
+            {
+                mapping.TableName = this.SetMapping.TableName ?? $"{mapping.Left.Type.Name}{mapping.Right.Type.Name}";
+            }
 
             return mapping;
         }
@@ -201,5 +223,10 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         /// The type of the class holding this end of the relationship
         /// </summary>
         public Type Type { get; set; }
+
+        /// <summary>
+        /// True if the mapping end property is defined
+        /// </summary>
+        public bool PropertyFound { get; set; }
     }
 }
