@@ -44,7 +44,7 @@ namespace Penguin.Persistence.Abstractions
         /// </summary>
         public virtual Expression Expression => All.Expression;
 
-        Expression IQueryable.Expression => throw new NotImplementedException();
+        Expression IQueryable.Expression => All.Expression;
 
         /// <summary>
         /// This should return a true if the object used to construct this persistence context has an associated data store (ex DbSet)
