@@ -2,7 +2,7 @@
 using Penguin.Persistence.Abstractions.Attributes.Control;
 using System;
 
-namespace Penguin.Persistence.Abstractions.Models.Base
+namespace Penguin.Persistence.Abstractions
 {
     /// <summary>
     /// Smallest possible persistable unit, containing only a definition for a unique int key

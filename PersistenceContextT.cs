@@ -1,5 +1,4 @@
 ﻿using Penguin.Persistence.Abstractions.Interfaces;
-using Penguin.Persistence.Abstractions.Models.Base;
 using System;
 using System.Collections;
 using System.Collections.Generic;

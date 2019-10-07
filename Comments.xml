@@ -946,12 +946,12 @@
             This should clear out all open object references and close the write contexts without commiting any changes
             </summary>
         </member>
-        <member name="T:Penguin.Persistence.Abstractions.Models.Base.KeyedObject">
+        <member name="T:Penguin.Persistence.Abstractions.KeyedObject">
             <summary>
             Smallest possible persistable unit, containing only a definition for a unique int key
             </summary>
         </member>
-        <member name="P:Penguin.Persistence.Abstractions.Models.Base.KeyedObject._Id">
+        <member name="P:Penguin.Persistence.Abstractions.KeyedObject._Id">
             <summary>
             The default unique int Key for any objects deriving from this type
             </summary>
