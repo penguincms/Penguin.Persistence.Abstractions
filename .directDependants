@@ -1,0 +1,12 @@
+Penguin.Cms.Abstractions
+Penguin.Cms.Attributes
+Penguin.Cms.Core
+Penguin.Cms.Entities
+Penguin.Entities
+Penguin.Entities.Persistence
+Penguin.Persistence.Database
+Penguin.Persistence.DependencyInjection
+Penguin.Persistence.EntityFramework
+Penguin.Persistence.Repositories
+Penguin.Persistence.Repositories.DependencyInjection
+Penguin.Persistence.Repositories.EntityFramework
