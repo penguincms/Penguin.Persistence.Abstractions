@@ -45,13 +45,14 @@ namespace Penguin.Persistence.Abstractions
         /// <param name="providerName">The name of the provider type (Specifically for EF)</param>
         public PersistenceConnectionInfo(string connectionString, string providerName = "")
         {
+            ProviderName = providerName;
+
             if (string.IsNullOrWhiteSpace(connectionString))
             {
-                throw new ArgumentException("Connection must be populated", nameof(connectionString));
+                return;
             }
 
             ConnectionString = connectionString;
-            ProviderName = providerName;
 
             ProviderType = connectionString.IndexOf(".sdf", StringComparison.CurrentCultureIgnoreCase) > 0 ? ProviderType.SQLCE : ProviderType.SQL;
         }

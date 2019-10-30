@@ -5,6 +5,8 @@
     /// </summary>
     public interface IPersistenceContextMigrator
     {
+        bool IsConfigured { get; }
+
         /// <summary>
         /// This should perform any setup required for the persistence context to function
         /// </summary>
