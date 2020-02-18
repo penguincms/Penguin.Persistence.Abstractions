@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Penguin.Persistence.Abstractions.Enums
+﻿namespace Penguin.Persistence.Abstractions.Enums
 {
     /// <summary>
     /// Specifies the requirement for the right property for mappings which may be unidirectional, OR bidirectional ex Required => Optional where the Required type may not contain a reference back to it, at all

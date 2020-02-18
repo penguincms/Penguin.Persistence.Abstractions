@@ -35,7 +35,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         public Mapping()
         {
             Left = new MappingEnd();
-            
+
             //Left property should always be found since its where the attribute is declared
             Left.PropertyFound = true;
 
@@ -96,18 +96,18 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
                 }
                 else
                 {
-                    if(rightPropertyRequirement == RightPropertyRequirement.SingleOrNull && rightProperties.Count > 1)
+                    if (rightPropertyRequirement == RightPropertyRequirement.SingleOrNull && rightProperties.Count > 1)
                     {
                         throw new Exception($"{nameof(RightPropertyRequirement.SingleOrNull)} right property requirement specified, but {rightProperties.Count()} entries matching the property requirements were found");
-                    } else
+                    }
+                    else
                     {
                         PropertyInfo p = rightProperties.SingleOrDefault();
 
-                        if(p != null)
+                        if (p != null)
                         {
                             this.SetMapping.Right.PropertyFound = true;
                             this.SetMapping.Right.Property = p.Name;
-
                         }
                     }
                 }
@@ -220,13 +220,13 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         public string Property { get; set; }
 
         /// <summary>
-        /// The type of the class holding this end of the relationship
-        /// </summary>
-        public Type Type { get; set; }
-
-        /// <summary>
         /// True if the mapping end property is defined
         /// </summary>
         public bool PropertyFound { get; set; }
+
+        /// <summary>
+        /// The type of the class holding this end of the relationship
+        /// </summary>
+        public Type Type { get; set; }
     }
 }

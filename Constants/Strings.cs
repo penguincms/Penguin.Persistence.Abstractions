@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Penguin.Persistence.Abstractions.Constants
+﻿namespace Penguin.Persistence.Abstractions.Constants
 {
     public class Strings
     {

@@ -573,7 +573,7 @@
         </member>
         <member name="P:Penguin.Persistence.Abstractions.Attributes.Validation.RangeAttribute.OperandType">
             <summary>
-            Gets the type of the <see cref="P:Penguin.Persistence.Abstractions.Attributes.Validation.RangeAttribute.Minimum"/> and <see cref="P:Penguin.Persistence.Abstractions.Attributes.Validation.RangeAttribute.Maximum"/> values (e.g. Int32, Double, or some custom type)
+            Gets the type of the <see cref="P:Penguin.Persistence.Abstractions.Attributes.Validation.RangeAttribute.Minimum" /> and <see cref="P:Penguin.Persistence.Abstractions.Attributes.Validation.RangeAttribute.Maximum" /> values (e.g. Int32, Double, or some custom type)
             </summary>
         </member>
         <member name="M:Penguin.Persistence.Abstractions.Attributes.Validation.RangeAttribute.#ctor">
