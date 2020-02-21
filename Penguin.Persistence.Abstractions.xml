@@ -388,14 +388,14 @@
             The property that forms the link between the classes
             </summary>
         </member>
-        <member name="P:Penguin.Persistence.Abstractions.Attributes.Relations.MappingEnd.Type">
-            <summary>
-            The type of the class holding this end of the relationship
-            </summary>
-        </member>
         <member name="P:Penguin.Persistence.Abstractions.Attributes.Relations.MappingEnd.PropertyFound">
             <summary>
             True if the mapping end property is defined
+            </summary>
+        </member>
+        <member name="P:Penguin.Persistence.Abstractions.Attributes.Relations.MappingEnd.Type">
+            <summary>
+            The type of the class holding this end of the relationship
             </summary>
         </member>
         <member name="T:Penguin.Persistence.Abstractions.Attributes.Relations.NotMappedAttribute">
@@ -573,7 +573,7 @@
         </member>
         <member name="P:Penguin.Persistence.Abstractions.Attributes.Validation.RangeAttribute.OperandType">
             <summary>
-            Gets the type of the <see cref="P:Penguin.Persistence.Abstractions.Attributes.Validation.RangeAttribute.Minimum" /> and <see cref="P:Penguin.Persistence.Abstractions.Attributes.Validation.RangeAttribute.Maximum" /> values (e.g. Int32, Double, or some custom type)
+            Gets the type of the <see cref="P:Penguin.Persistence.Abstractions.Attributes.Validation.RangeAttribute.Minimum"/> and <see cref="P:Penguin.Persistence.Abstractions.Attributes.Validation.RangeAttribute.Maximum"/> values (e.g. Int32, Double, or some custom type)
             </summary>
         </member>
         <member name="M:Penguin.Persistence.Abstractions.Attributes.Validation.RangeAttribute.#ctor">
