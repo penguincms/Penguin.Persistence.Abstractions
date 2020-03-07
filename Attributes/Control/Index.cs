@@ -16,7 +16,7 @@
         /// <param name="isUnique">If true, no duplicate values should be persisted among members of this class</param>
         public IndexAttribute(bool isUnique = false)
         {
-            IsUnique = isUnique;
+            this.IsUnique = isUnique;
         }
     }
 }

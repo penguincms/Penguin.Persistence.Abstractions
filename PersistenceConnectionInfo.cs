@@ -3,22 +3,6 @@
 namespace Penguin.Persistence.Abstractions
 {
     /// <summary>
-    /// Enum with the intent of simplifying identification of storage types
-    /// </summary>
-    public enum ProviderType
-    {
-        /// <summary>
-        /// An MSSQL connection
-        /// </summary>
-        SQL,
-
-        /// <summary>
-        /// An SQLCE connection
-        /// </summary>
-        SQLCE
-    }
-
-    /// <summary>
     /// An injectable representation of a database connection definition, to simplify the process of ensuring that all systems use the same database connection information
     /// </summary>
     public class PersistenceConnectionInfo
@@ -45,16 +29,32 @@ namespace Penguin.Persistence.Abstractions
         /// <param name="providerName">The name of the provider type (Specifically for EF)</param>
         public PersistenceConnectionInfo(string connectionString, string providerName = "")
         {
-            ProviderName = providerName;
+            this.ProviderName = providerName;
 
             if (string.IsNullOrWhiteSpace(connectionString))
             {
                 return;
             }
 
-            ConnectionString = connectionString;
+            this.ConnectionString = connectionString;
 
-            ProviderType = connectionString.IndexOf(".sdf", StringComparison.CurrentCultureIgnoreCase) > 0 ? ProviderType.SQLCE : ProviderType.SQL;
+            this.ProviderType = connectionString.IndexOf(".sdf", StringComparison.CurrentCultureIgnoreCase) > 0 ? ProviderType.SQLCE : ProviderType.SQL;
         }
+    }
+
+    /// <summary>
+    /// Enum with the intent of simplifying identification of storage types
+    /// </summary>
+    public enum ProviderType
+    {
+        /// <summary>
+        /// An MSSQL connection
+        /// </summary>
+        SQL,
+
+        /// <summary>
+        /// An SQLCE connection
+        /// </summary>
+        SQLCE
     }
 }

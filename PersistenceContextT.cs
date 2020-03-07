@@ -23,7 +23,7 @@ namespace Penguin.Persistence.Abstractions
         {
             get
             {
-                IQueryable<T> root = PrimaryDataSource;
+                IQueryable<T> root = this.PrimaryDataSource;
 
                 return root;
             }
@@ -34,16 +34,16 @@ namespace Penguin.Persistence.Abstractions
         /// <summary>
         /// This returns the core type of the underlying IQueriable
         /// </summary>
-        public Type ElementType => All.ElementType;
+        public Type ElementType => this.All.ElementType;
 
         Type IQueryable.ElementType => throw new NotImplementedException();
 
         /// <summary>
         /// This returns the Expression of the underlying IQueriable
         /// </summary>
-        public virtual Expression Expression => All.Expression;
+        public virtual Expression Expression => this.All.Expression;
 
-        Expression IQueryable.Expression => All.Expression;
+        Expression IQueryable.Expression => this.All.Expression;
 
         /// <summary>
         /// This should return a true if the object used to construct this persistence context has an associated data store (ex DbSet)
@@ -53,7 +53,7 @@ namespace Penguin.Persistence.Abstractions
         /// <summary>
         /// This returns the Provider of the underlying IQueriable
         /// </summary>
-        public IQueryProvider Provider => All.Provider;
+        public IQueryProvider Provider => this.All.Provider;
 
         /// <summary>
         /// This should contain any additional sources for objects that are READ ONLY (ex caches)
@@ -88,7 +88,10 @@ namespace Penguin.Persistence.Abstractions
         /// <param name="o">The object(s) to add to the data store</param>
         public abstract void Add(T o);
 
-        void ICrud.Add(object o) => this.Add((T)o);
+        void ICrud.Add(object o)
+        {
+            this.Add((T)o);
+        }
 
         /// <summary>
         /// This should add a new object to the data store, or update an existing matching object
@@ -96,7 +99,10 @@ namespace Penguin.Persistence.Abstractions
         /// <param name="o">The object(s) to add or update</param>
         public abstract void AddOrUpdate(T o);
 
-        void ICrud.AddOrUpdate(object o) => this.AddOrUpdate((T)o);
+        void ICrud.AddOrUpdate(object o)
+        {
+            this.AddOrUpdate((T)o);
+        }
 
         /// <summary>
         /// This should add a new object to the data store, or update an existing matching object
@@ -115,7 +121,10 @@ namespace Penguin.Persistence.Abstractions
             }
         }
 
-        void ICrud.AddOrUpdateRange(IEnumerable o) => this.AddOrUpdateRange(o.Cast<T>());
+        void ICrud.AddOrUpdateRange(IEnumerable o)
+        {
+            this.AddOrUpdateRange(o.Cast<T>());
+        }
 
         /// <summary>
         /// This should add a new object to the underlying data store
@@ -134,7 +143,10 @@ namespace Penguin.Persistence.Abstractions
             }
         }
 
-        void ICrud.AddRange(IEnumerable o) => this.AddRange(o.Cast<T>());
+        void ICrud.AddRange(IEnumerable o)
+        {
+            this.AddRange(o.Cast<T>());
+        }
 
         /// <summary>
         /// This should add the passed in IWriteContext to the list of open contexts, and enable persistence
@@ -165,7 +177,10 @@ namespace Penguin.Persistence.Abstractions
         /// <param name="o">The object(s) to remove from the data store</param>
         public abstract void Delete(T o);
 
-        void ICrud.Delete(object o) => this.Delete((T)o);
+        void ICrud.Delete(object o)
+        {
+            this.Delete((T)o);
+        }
 
         /// <summary>
         /// This should remove objects from the underlying data store, or make them inaccessible (if deleting is not prefered)
@@ -184,7 +199,10 @@ namespace Penguin.Persistence.Abstractions
             }
         }
 
-        void ICrud.DeleteRange(IEnumerable o) => this.DeleteRange(o.Cast<T>());
+        void ICrud.DeleteRange(IEnumerable o)
+        {
+            this.DeleteRange(o.Cast<T>());
+        }
 
         /// <summary>
         /// This should check to ensure that the IWriteContext is registered with the persistence context, remove it, and if it was the LAST open
@@ -198,7 +216,10 @@ namespace Penguin.Persistence.Abstractions
         /// </summary>
         public abstract T Find(object Key);
 
-        object ICrud.Find(object Key) => this.Find(Key);
+        object ICrud.Find(object Key)
+        {
+            return this.Find(Key);
+        }
 
         /// <summary>
         /// This should return any object with a key in the provided list
@@ -216,15 +237,24 @@ namespace Penguin.Persistence.Abstractions
             }
         }
 
-        IEnumerable ICrud.FindRange(IEnumerable Key) => this.FindRange(Key);
+        IEnumerable ICrud.FindRange(IEnumerable Key)
+        {
+            return this.FindRange(Key);
+        }
 
         /// <summary>
         /// This returns the Enumerator for the underlying IQueriable
         /// </summary>
         /// <returns>The Enumerator for the underlying IQueriable</returns>
-        public IEnumerator<T> GetEnumerator() => All.GetEnumerator();
+        public IEnumerator<T> GetEnumerator()
+        {
+            return this.All.GetEnumerator();
+        }
 
-        IEnumerator IEnumerable.GetEnumerator() => All.GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.All.GetEnumerator();
+        }
 
         /// <summary>
         /// This should return an array of any IWriteContexts that are currently registered by this persistence context
@@ -245,7 +275,10 @@ namespace Penguin.Persistence.Abstractions
         /// <param name="o">The objects to update from the underlying data store</param>
         public abstract void Update(T o);
 
-        void ICrud.Update(object o) => this.Update((T)o);
+        void ICrud.Update(object o)
+        {
+            this.Update((T)o);
+        }
 
         /// <summary>
         /// This should update any objects that already exist in the underlying data store
@@ -264,7 +297,10 @@ namespace Penguin.Persistence.Abstractions
             }
         }
 
-        void ICrud.UpdateRange(IEnumerable o) => this.UpdateRange(o.Cast<T>());
+        void ICrud.UpdateRange(IEnumerable o)
+        {
+            this.UpdateRange(o.Cast<T>());
+        }
 
         /// <summary>
         /// This should spawn a new IWriteContext instance that is pre-registered with this persistence context

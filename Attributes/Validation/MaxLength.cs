@@ -16,7 +16,7 @@
         /// <param name="length">The max length of the property</param>
         public MaxLengthAttribute(int length)
         {
-            Length = length;
+            this.Length = length;
         }
 
         /// <summary>
@@ -24,7 +24,7 @@
         /// </summary>
         public MaxLengthAttribute()
         {
-            Length = int.MaxValue;
+            this.Length = int.MaxValue;
         }
     }
 }

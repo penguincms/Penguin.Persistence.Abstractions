@@ -24,8 +24,8 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         /// <param name="targetType">The type of the object that this property (assumed key) references</param>
         public HasManyAttribute(string targetProperty = null, Type targetType = null)
         {
-            TargetProperty = targetProperty;
-            TargetType = targetType;
+            this.TargetProperty = targetProperty;
+            this.TargetType = targetType;
         }
     }
 }

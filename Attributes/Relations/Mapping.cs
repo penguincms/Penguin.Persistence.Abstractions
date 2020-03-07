@@ -34,12 +34,14 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         /// </summary>
         public Mapping()
         {
-            Left = new MappingEnd();
+            this.Left = new MappingEnd
+            {
 
-            //Left property should always be found since its where the attribute is declared
-            Left.PropertyFound = true;
+                //Left property should always be found since its where the attribute is declared
+                PropertyFound = true
+            };
 
-            Right = new MappingEnd();
+            this.Right = new MappingEnd();
         }
     }
 
@@ -67,9 +69,9 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
 
             Mapping mapping = new Mapping();
 
-            mapping.Left.Type = SetMapping.Left.Type ?? leftProperty.ReflectedType;
+            mapping.Left.Type = this.SetMapping.Left.Type ?? leftProperty.ReflectedType;
 
-            mapping.Right.Type = SetMapping.Right.Type ?? leftProperty.PropertyType;
+            mapping.Right.Type = this.SetMapping.Right.Type ?? leftProperty.PropertyType;
 
             if (typeof(ICollection).IsAssignableFrom(mapping.Right.Type))
             {
@@ -78,7 +80,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
 
             if (this.SetMapping.Right.Property is null)
             {
-                Type searchType = GetRightPropertyType(leftProperty.ReflectedType);
+                Type searchType = this.GetRightPropertyType(leftProperty.ReflectedType);
 
                 List<PropertyInfo> rightProperties = mapping.Right.Type.GetProperties()
                                                                        .Where(p => CheckPropertyAssignment(p, searchType))
@@ -90,7 +92,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
                                              .ToList();
                 }
 
-                if (rightProperties.Count() != 1 && rightPropertyRequirement == RightPropertyRequirement.Single)
+                if (rightProperties.Count != 1 && rightPropertyRequirement == RightPropertyRequirement.Single)
                 {
                     throw new Exception($"Did not find exactly 1 property of type {searchType.FullName} on type {mapping.Right.Type.FullName}. Can not imply navigation. Please specify the property name to be used on the other end of this relationship");
                 }
@@ -98,7 +100,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
                 {
                     if (rightPropertyRequirement == RightPropertyRequirement.SingleOrNull && rightProperties.Count > 1)
                     {
-                        throw new Exception($"{nameof(RightPropertyRequirement.SingleOrNull)} right property requirement specified, but {rightProperties.Count()} entries matching the property requirements were found");
+                        throw new Exception($"{nameof(RightPropertyRequirement.SingleOrNull)} right property requirement specified, but {rightProperties.Count} entries matching the property requirements were found");
                     }
                     else
                     {

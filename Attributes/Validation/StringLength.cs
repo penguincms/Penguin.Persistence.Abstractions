@@ -16,7 +16,7 @@
         /// <param name="length">The maximum string length for the property</param>
         public StringLengthAttribute(int length)
         {
-            Length = length;
+            this.Length = length;
         }
     }
 }
