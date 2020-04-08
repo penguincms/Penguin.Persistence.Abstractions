@@ -114,22 +114,6 @@
             Used to identify the primary key for the object for use in database persistence
             </summary>
         </member>
-        <member name="T:Penguin.Persistence.Abstractions.Attributes.EntityType">
-            <summary>
-            Describes how this object should be treated in the context of a persistence context or serialization
-            </summary>
-        </member>
-        <member name="F:Penguin.Persistence.Abstractions.Attributes.EntityType.Entity">
-            <summary>
-            This entity is a fully qualified top level object. Each relationship is important and it should have its own persistence context (Ex a user)
-            </summary>
-        </member>
-        <member name="F:Penguin.Persistence.Abstractions.Attributes.EntityType.Link">
-            <summary>
-            This entity is used only to hold complex information from other entites. It does not need a persistence context, will only be accessed through relationships, and
-            is only as distinct as the values of its properties (ex a weight class)
-            </summary>
-        </member>
         <member name="T:Penguin.Persistence.Abstractions.Attributes.EntityAttribute">
             <summary>
             Describes how this object should be treated in the context of a persistence context or serialization
@@ -151,6 +135,22 @@
             Returns the type as a string (for use in dynamic rendering paths)
             </summary>
             <returns>The type as a string</returns>
+        </member>
+        <member name="T:Penguin.Persistence.Abstractions.Attributes.EntityType">
+            <summary>
+            Describes how this object should be treated in the context of a persistence context or serialization
+            </summary>
+        </member>
+        <member name="F:Penguin.Persistence.Abstractions.Attributes.EntityType.Entity">
+            <summary>
+            This entity is a fully qualified top level object. Each relationship is important and it should have its own persistence context (Ex a user)
+            </summary>
+        </member>
+        <member name="F:Penguin.Persistence.Abstractions.Attributes.EntityType.Link">
+            <summary>
+            This entity is used only to hold complex information from other entites. It does not need a persistence context, will only be accessed through relationships, and
+            is only as distinct as the values of its properties (ex a weight class)
+            </summary>
         </member>
         <member name="T:Penguin.Persistence.Abstractions.Attributes.PersistenceAttribute">
             <summary>
@@ -971,21 +971,6 @@
             The Width of the object being represented
             </summary>
         </member>
-        <member name="T:Penguin.Persistence.Abstractions.ProviderType">
-            <summary>
-            Enum with the intent of simplifying identification of storage types
-            </summary>
-        </member>
-        <member name="F:Penguin.Persistence.Abstractions.ProviderType.SQL">
-            <summary>
-            An MSSQL connection
-            </summary>
-        </member>
-        <member name="F:Penguin.Persistence.Abstractions.ProviderType.SQLCE">
-            <summary>
-            An SQLCE connection
-            </summary>
-        </member>
         <member name="T:Penguin.Persistence.Abstractions.PersistenceConnectionInfo">
             <summary>
             An injectable representation of a database connection definition, to simplify the process of ensuring that all systems use the same database connection information
@@ -1012,6 +997,21 @@
             </summary>
             <param name="connectionString">The Raw connection string used to construct this instance</param>
             <param name="providerName">The name of the provider type (Specifically for EF)</param>
+        </member>
+        <member name="T:Penguin.Persistence.Abstractions.ProviderType">
+            <summary>
+            Enum with the intent of simplifying identification of storage types
+            </summary>
+        </member>
+        <member name="F:Penguin.Persistence.Abstractions.ProviderType.SQL">
+            <summary>
+            An MSSQL connection
+            </summary>
+        </member>
+        <member name="F:Penguin.Persistence.Abstractions.ProviderType.SQLCE">
+            <summary>
+            An SQLCE connection
+            </summary>
         </member>
         <member name="T:Penguin.Persistence.Abstractions.PersistenceContext`1">
             <summary>
