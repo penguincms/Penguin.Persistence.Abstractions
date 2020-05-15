@@ -36,7 +36,6 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         {
             this.Left = new MappingEnd
             {
-
                 //Left property should always be found since its where the attribute is declared
                 PropertyFound = true
             };

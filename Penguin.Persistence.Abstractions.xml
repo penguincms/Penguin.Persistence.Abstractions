@@ -644,6 +644,29 @@
             Will allow for any property matching type, and will return null if many are found
             </summary>
         </member>
+        <member name="T:Penguin.Persistence.Abstractions.Exceptions.DatabaseNotConfiguredException">
+            <summary>
+            An exception thrown when the database is not configured
+            </summary>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Exceptions.DatabaseNotConfiguredException.#ctor(System.String)">
+            <summary>
+            Constructs a new instance of the exception with the specified message
+            </summary>
+            <param name="message">The error message</param>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Exceptions.DatabaseNotConfiguredException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructs a new instance of the exception with the specified message and inner exception
+            </summary>
+            <param name="message">The error message</param>
+            <param name="innerException">The exception to wrap</param>
+        </member>
+        <member name="M:Penguin.Persistence.Abstractions.Exceptions.DatabaseNotConfiguredException.#ctor">
+            <summary>
+            Constructs a new instance of the exception with the specified message
+            </summary>
+        </member>
         <member name="M:Penguin.Persistence.Abstractions.Extensions.PropertyInfoExtensions.DisplayName(System.Reflection.PropertyInfo)">
             <summary>
             Attempts to get a name from a set DisplayAttribute, and if not found, falls back on the property name
