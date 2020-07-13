@@ -16,7 +16,10 @@ namespace Penguin.Persistence.Abstractions.Extensions
         /// <returns>The proper display name for the property</returns>
         public static string DisplayName(this PropertyInfo property)
         {
-            Contract.Requires(property != null);
+            if (property is null)
+            {
+                throw new System.ArgumentNullException(nameof(property));
+            }
 
             DisplayAttribute display = property.GetCustomAttribute<DisplayAttribute>();
 
