@@ -5,8 +5,6 @@ namespace Penguin.Persistence.Abstractions.Interfaces
     /// <summary>
     /// A nongeneric interface for a persistence context to allow access to data without knowing the underlying type
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1010:Collections should implement generic interface", Justification = "<Pending>")]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Naming", "CA1710:Identifiers should have correct suffix", Justification = "<Pending>")]
     public interface IPersistenceContext : ICrud, IManageWriteContexts
     {
         /// <summary>

@@ -190,7 +190,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
             Type leftType;
             Type rightType;
 
-            if(toCheck.GetIndexParameters().Length != 0)
+            if (toCheck.GetIndexParameters().Length != 0)
             {
                 return false;
             }

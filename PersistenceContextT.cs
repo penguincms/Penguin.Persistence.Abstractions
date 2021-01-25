@@ -12,7 +12,6 @@ namespace Penguin.Persistence.Abstractions
     /// A base class representing a context used for persisting information to a database or other format
     /// </summary>
     /// <typeparam name="T">The type of object being specifically referenced to by this instance</typeparam>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Naming", "CA1710:Identifiers should have correct suffix", Justification = "<Pending>")]
     public abstract class PersistenceContext<T> : IPersistenceContext<T> where T : KeyedObject
     {
         /// <summary>

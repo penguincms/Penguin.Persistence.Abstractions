@@ -1,5 +1,4 @@
 ﻿using Penguin.Persistence.Abstractions.Attributes.Rendering;
-using System.Diagnostics.Contracts;
 using System.Reflection;
 
 namespace Penguin.Persistence.Abstractions.Extensions
