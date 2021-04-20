@@ -10,7 +10,7 @@
     <DocumentationFile>Penguin.Persistence.Abstractions.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Penguin.Entities.Abstractions" Version="5.0.2-TACVG7B" />
-    <PackageReference Include="Penguin.Reflection.Extensions" Version="5.0.2-TACVG7B" />
+    <PackageReference Include="Penguin.Entities.Abstractions" Version="5.0.2-TADRIFB" />
+    <PackageReference Include="Penguin.Reflection.Extensions" Version="5.0.2-TADRIFB" />
   </ItemGroup>
 </Project>
