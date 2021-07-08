@@ -16,8 +16,8 @@ namespace Penguin.Persistence.Abstractions
         /// </summary>
         [Key]
         [DontAllow(DisplayContexts.Edit | DisplayContexts.List)]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "This is done to prevent name from colliding with existing or common properties")]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores", Justification = "This is done to prevent name from colliding with existing or common properties")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "Named to prevent conficts with common fields")]
+
         public virtual int _Id { get; set; }
     }
 }
