@@ -39,9 +39,6 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         /// </summary>
         /// <param name="LeftPropertyType">The type containing this property</param>
         /// <returns>It returns an ICollection of this type since its a one-to-many relationship</returns>
-        public override Type GetRightPropertyType(Type LeftPropertyType)
-        {
-            return typeof(ICollection<>).MakeGenericType(LeftPropertyType);
-        }
+        public override Type GetRightPropertyType(Type LeftPropertyType) => typeof(ICollection<>).MakeGenericType(LeftPropertyType);
     }
 }

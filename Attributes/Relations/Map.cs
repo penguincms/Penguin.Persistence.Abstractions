@@ -45,9 +45,6 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         /// </summary>
         /// <param name="LeftPropertyType">The left property type</param>
         /// <returns>Gets the key type of the left property</returns>
-        public override Type GetRightPropertyType(Type LeftPropertyType)
-        {
-            return GetKeyType(LeftPropertyType);
-        }
+        public override Type GetRightPropertyType(Type LeftPropertyType) => GetKeyType(LeftPropertyType);
     }
 }

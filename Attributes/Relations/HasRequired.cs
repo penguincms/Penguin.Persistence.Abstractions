@@ -37,9 +37,6 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         /// </summary>
         /// <param name="LeftPropertyType">The type of the class containing this attribute. Its a one-to-one so it just returns this type</param>
         /// <returns>The type of the class containing this attribute</returns>
-        public override Type GetRightPropertyType(Type LeftPropertyType)
-        {
-            return LeftPropertyType;
-        }
+        public override Type GetRightPropertyType(Type LeftPropertyType) => LeftPropertyType;
     }
 }

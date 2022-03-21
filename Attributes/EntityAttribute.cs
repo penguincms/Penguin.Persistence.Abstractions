@@ -23,10 +23,7 @@
         /// Returns the type as a string (for use in dynamic rendering paths)
         /// </summary>
         /// <returns>The type as a string</returns>
-        public override string ToString()
-        {
-            return this.Type.ToString();
-        }
+        public override string ToString() => this.Type.ToString();
     }
 
     /// <summary>
