@@ -103,6 +103,9 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         /// </summary>
         /// <param name="LeftPropertyType">The type of this property</param>
         /// <returns>A collection of this type, since this is Many to Many</returns>
-        public override Type GetRightPropertyType(Type LeftPropertyType) => typeof(ICollection<>).MakeGenericType(LeftPropertyType);
+        public override Type GetRightPropertyType(Type LeftPropertyType)
+        {
+            return typeof(ICollection<>).MakeGenericType(LeftPropertyType);
+        }
     }
 }
