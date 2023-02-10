@@ -11,7 +11,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Control
         /// <summary>
         /// This DisplayContext(s) this attribute specifies
         /// </summary>
-        public DisplayContexts Context { get; set; }
+        public DisplayContexts Context { get; internal set; }
 
         /// <summary>
         /// Creates a new instance of this attribute
