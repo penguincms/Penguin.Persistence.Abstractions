@@ -51,6 +51,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         }
 
         public string RightProperty { get; }
+
         public Type RightType { get; }
     }
 }

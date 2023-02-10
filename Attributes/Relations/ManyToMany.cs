@@ -109,8 +109,11 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         }
 
         public string RightProperty { get; }
+
         public string LeftKey { get; }
+
         public string RightKey { get; }
+
         public string TableName { get; }
     }
 }
