@@ -7,14 +7,14 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
     /// Specifies that the property this applies to is optional, and the other end of the reference may contain a list of
     /// the class containing this property.
     /// </summary>
-    public class OptionalToManyAttribute : MappingAttribute
+    public sealed class OptionalToManyAttribute : MappingAttribute
     {
         /// <summary>
         /// Constructs a new instance of this attribute
         /// </summary>
         public OptionalToManyAttribute()
         {
-            this.SetMapping = new Mapping()
+            SetMapping = new Mapping()
             {
             };
         }
@@ -25,7 +25,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         /// <param name="rightProperty">The optional name for the property that links back to this object</param>
         public OptionalToManyAttribute(string rightProperty)
         {
-            this.SetMapping = new Mapping()
+            SetMapping = new Mapping()
             {
                 Right = new MappingEnd()
                 {
@@ -43,5 +43,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         {
             return typeof(ICollection<>).MakeGenericType(LeftPropertyType);
         }
+
+        public string RightProperty { get; }
     }
 }

@@ -5,7 +5,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Validation
     /// <summary>
     /// A range attribute stolen from MS to represent a possible range of values for a property
     /// </summary>
-    public class RangeAttribute : PersistenceAttribute
+    public sealed class RangeAttribute : PersistenceAttribute
     {
         /// <summary>
         /// Gets the maximum value for the range
@@ -37,9 +37,9 @@ namespace Penguin.Persistence.Abstractions.Attributes.Validation
         public RangeAttribute(int minimum, int maximum)
             : this()
         {
-            this.Minimum = minimum;
-            this.Maximum = maximum;
-            this.OperandType = typeof(int);
+            Minimum = minimum;
+            Maximum = maximum;
+            OperandType = typeof(int);
         }
 
         /// <summary>
@@ -50,9 +50,9 @@ namespace Penguin.Persistence.Abstractions.Attributes.Validation
         public RangeAttribute(double minimum, double maximum)
             : this()
         {
-            this.Minimum = minimum;
-            this.Maximum = maximum;
-            this.OperandType = typeof(double);
+            Minimum = minimum;
+            Maximum = maximum;
+            OperandType = typeof(double);
         }
 
         /// <summary>
@@ -64,9 +64,11 @@ namespace Penguin.Persistence.Abstractions.Attributes.Validation
         public RangeAttribute(Type type, string minimum, string maximum)
             : this()
         {
-            this.OperandType = type;
-            this.Minimum = minimum;
-            this.Maximum = maximum;
+            OperandType = type;
+            Minimum = minimum;
+            Maximum = maximum;
         }
+
+        public Type Type { get; }
     }
 }

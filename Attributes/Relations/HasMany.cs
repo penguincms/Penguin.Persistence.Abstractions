@@ -5,17 +5,17 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
     /// <summary>
     /// Denotes that this property should contain multiple references to the target type
     /// </summary>
-    public class HasManyAttribute : RelationalAttribute
+    public sealed class HasManyAttribute : RelationalAttribute
     {
         /// <summary>
         /// The property name that defines the key referenced
         /// </summary>
-        public string TargetProperty { get; set; }
+        public string TargetProperty { get; internal set; }
 
         /// <summary>
         /// The type of the object that this property (assumed key) references
         /// </summary>
-        public Type TargetType { get; set; }
+        public Type TargetType { get; internal set; }
 
         /// <summary>
         /// Constructs a new instance of this attribute
@@ -24,8 +24,8 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         /// <param name="targetType">The type of the object that this property (assumed key) references</param>
         public HasManyAttribute(string targetProperty = null, Type targetType = null)
         {
-            this.TargetProperty = targetProperty;
-            this.TargetType = targetType;
+            TargetProperty = targetProperty;
+            TargetType = targetType;
         }
     }
 }

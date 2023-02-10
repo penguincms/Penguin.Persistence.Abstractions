@@ -29,16 +29,16 @@ namespace Penguin.Persistence.Abstractions
         /// <param name="providerName">The name of the provider type (Specifically for EF)</param>
         public PersistenceConnectionInfo(string connectionString, string providerName = "")
         {
-            this.ProviderName = providerName;
+            ProviderName = providerName;
 
             if (string.IsNullOrWhiteSpace(connectionString))
             {
                 return;
             }
 
-            this.ConnectionString = connectionString;
+            ConnectionString = connectionString;
 
-            this.ProviderType = connectionString.IndexOf(".sdf", StringComparison.CurrentCultureIgnoreCase) > 0 ? ProviderType.SQLCE : ProviderType.SQL;
+            ProviderType = connectionString.IndexOf(".sdf", StringComparison.CurrentCultureIgnoreCase) > 0 ? ProviderType.SQLCE : ProviderType.SQL;
         }
     }
 

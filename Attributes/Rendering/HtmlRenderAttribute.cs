@@ -11,7 +11,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Rendering
         /// <summary>
         /// The rendering type to use for the field
         /// </summary>
-        public RenderingType Type { get; set; }
+        public RenderingType Type { get; internal set; }
 
         /// <summary>
         /// An enum representing the various HTML5 input options for a text property
@@ -33,7 +33,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Rendering
         /// <param name="type">The HTML5 type to use when rendering the field</param>
         public HtmlRenderAttribute(RenderingType type)
         {
-            this.Type = type;
+            Type = type;
         }
     }
 }

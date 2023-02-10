@@ -349,6 +349,7 @@
             Gets the mapping data for this relationship by attempting to fill in any undefined values
             </summary>
             <param name="leftProperty">The property on the defined end of the relationship</param>
+            <param name="rightPropertyRequirement"></param>
             <returns>The filled in mapping data that may contain assumed definitions if there were unspecified properties</returns>
         </member>
         <member name="M:Penguin.Persistence.Abstractions.Attributes.Relations.MappingAttribute.GetRightPropertyType(System.Type)">
@@ -1129,13 +1130,13 @@
             <summary>
             If all WriteContexts have been deregistered, this should persist any changes to the underlying data store
             </summary>
-            <param name="context">The IWriteContext that has finished making changes</param>
+            <param name="writeContext">The IWriteContext that has finished making changes</param>
         </member>
         <member name="M:Penguin.Persistence.Abstractions.PersistenceContext`1.CommitASync(Penguin.Persistence.Abstractions.Interfaces.IWriteContext)">
             <summary>
             If all WriteContexts have been deregistered, this should persist any changes to the underlying data store in an ASYNC manner
             </summary>
-            <param name="context">The IWriteContext that has finished making changes</param>
+            <param name="writeContext">The IWriteContext that has finished making changes</param>
         </member>
         <member name="M:Penguin.Persistence.Abstractions.PersistenceContext`1.Delete(`0)">
             <summary>

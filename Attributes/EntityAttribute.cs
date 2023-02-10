@@ -3,12 +3,12 @@
     /// <summary>
     /// Describes how this object should be treated in the context of a persistence context or serialization
     /// </summary>
-    public class EntityAttribute : PersistenceAttribute
+    public sealed class EntityAttribute : PersistenceAttribute
     {
         /// <summary>
         /// What kind of entity this is
         /// </summary>
-        public EntityType Type { get; set; }
+        public EntityType Type { get; internal set; }
 
         /// <summary>
         /// Constructs a new instance of this attribute
@@ -16,7 +16,7 @@
         /// <param name="type">What kind of entity this is</param>
         public EntityAttribute(EntityType type)
         {
-            this.Type = type;
+            Type = type;
         }
 
         /// <summary>
@@ -25,7 +25,7 @@
         /// <returns>The type as a string</returns>
         public override string ToString()
         {
-            return this.Type.ToString();
+            return Type.ToString();
         }
     }
 

@@ -3,12 +3,12 @@
     /// <summary>
     /// Defines a maximum string length for a property
     /// </summary>
-    public class StringLengthAttribute : PersistenceAttribute
+    public sealed class StringLengthAttribute : PersistenceAttribute
     {
         /// <summary>
         /// The maximum string length for the property
         /// </summary>
-        public int Length { get; set; }
+        public int Length { get; internal set; }
 
         /// <summary>
         /// Constructs a new instance of this attribute
@@ -16,7 +16,7 @@
         /// <param name="length">The maximum string length for the property</param>
         public StringLengthAttribute(int length)
         {
-            this.Length = length;
+            Length = length;
         }
     }
 }

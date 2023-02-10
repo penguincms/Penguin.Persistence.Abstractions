@@ -22,14 +22,7 @@ namespace Penguin.Persistence.Abstractions.Extensions
 
             DisplayAttribute display = property.GetCustomAttribute<DisplayAttribute>();
 
-            if (string.IsNullOrWhiteSpace(display?.Name))
-            {
-                return property.Name;
-            }
-            else
-            {
-                return display.Name;
-            }
+            return string.IsNullOrWhiteSpace(display?.Name) ? property.Name : display.Name;
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
     /// Maps a property on one object to a property on another object for entity relations. This should be used when the mapped property is only a key
     /// and not an actual entity type
     /// </summary>
-    public class MapAttribute : MappingAttribute
+    public sealed class MapAttribute : MappingAttribute
     {
         /// <summary>
         /// Constructs a new instance of this attribute
@@ -14,7 +14,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         /// <param name="rightProperty">The property name on the far end of the relationship</param>
         public MapAttribute(string rightProperty)
         {
-            this.SetMapping = new Mapping()
+            SetMapping = new Mapping()
             {
                 Right = new MappingEnd()
                 {
@@ -30,7 +30,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         /// <param name="rightProperty">The property name that defines the key referenced</param>
         public MapAttribute(Type rightType, string rightProperty)
         {
-            this.SetMapping = new Mapping()
+            SetMapping = new Mapping()
             {
                 Right = new MappingEnd()
                 {
@@ -49,5 +49,8 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         {
             return GetKeyType(LeftPropertyType);
         }
+
+        public string RightProperty { get; }
+        public Type RightType { get; }
     }
 }

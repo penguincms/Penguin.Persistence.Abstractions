@@ -3,7 +3,7 @@
     /// <summary>
     /// Used for defining common display properties
     /// </summary>
-    public class DisplayAttribute : PersistenceAttribute
+    public sealed class DisplayAttribute : PersistenceAttribute
     {
         /// <summary>
         /// Should fields be created during scaffolding? Unused

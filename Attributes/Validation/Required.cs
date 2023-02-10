@@ -3,7 +3,7 @@
     /// <summary>
     /// Used to denote that this property should not be default/null when persisted
     /// </summary>
-    public class RequiredAttribute : PersistenceAttribute
+    public sealed class RequiredAttribute : PersistenceAttribute
     {
     }
 }

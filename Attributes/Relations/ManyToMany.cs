@@ -6,14 +6,14 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
     /// <summary>
     /// Denotes a property as being the owning end of a Many To Many relationship
     /// </summary>
-	public class ManyToManyAttribute : MappingAttribute
+	public sealed class ManyToManyAttribute : MappingAttribute
     {
         /// <summary>
         /// Creates a new instance of this attribute. All properties are inferred from usage
         /// </summary>
         public ManyToManyAttribute()
         {
-            this.SetMapping = new Mapping()
+            SetMapping = new Mapping()
             {
             };
         }
@@ -24,7 +24,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         /// <param name="rightProperty">The name of the property that links back to this property from the other end of the relationship</param>
 		public ManyToManyAttribute(string rightProperty)
         {
-            this.SetMapping = new Mapping()
+            SetMapping = new Mapping()
             {
                 Right = new MappingEnd()
                 {
@@ -41,7 +41,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         /// <param name="rightKey">The name of the identifying property from the other end of the relationship</param>
 		public ManyToManyAttribute(string rightProperty, string leftKey, string rightKey)
         {
-            this.SetMapping = new Mapping()
+            SetMapping = new Mapping()
             {
                 Right = new MappingEnd()
                 {
@@ -63,7 +63,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         /// <param name="tableName">The name of the table used to store this relationship</param>
 		public ManyToManyAttribute(string rightProperty, string tableName)
         {
-            this.SetMapping = new Mapping()
+            SetMapping = new Mapping()
             {
                 Right = new MappingEnd()
                 {
@@ -82,7 +82,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         /// <param name="tableName">The name of the table used to store this relationship</param>
 		public ManyToManyAttribute(string rightProperty, string leftKey, string rightKey, string tableName)
         {
-            this.SetMapping = new Mapping()
+            SetMapping = new Mapping()
             {
                 Right = new MappingEnd()
                 {
@@ -107,5 +107,10 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         {
             return typeof(ICollection<>).MakeGenericType(LeftPropertyType);
         }
+
+        public string RightProperty { get; }
+        public string LeftKey { get; }
+        public string RightKey { get; }
+        public string TableName { get; }
     }
 }

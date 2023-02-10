@@ -7,12 +7,12 @@ namespace Penguin.Persistence.Abstractions.Attributes.Control
     /// No depth supplied is infinite until reaching a tag with a supplied depth
     /// </summary>
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property)]
-    public class EagerLoadAttribute : Attribute
+    public sealed class EagerLoadAttribute : Attribute
     {
         /// <summary>
         /// The number of steps to travel down the object graph
         /// </summary>
-        public int? Depth { get; set; }
+        public int? Depth { get; internal set; }
 
         /// <summary>
         /// Creates a new instance of this attribute with the specified depth
@@ -20,7 +20,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Control
         /// <param name="depth">The number of steps to travel down the object graph</param>
         public EagerLoadAttribute(int depth)
         {
-            this.Depth = depth;
+            Depth = depth;
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Control
         /// </summary>
         public EagerLoadAttribute()
         {
-            this.Depth = null;
+            Depth = null;
         }
     }
 }

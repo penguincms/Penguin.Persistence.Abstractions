@@ -5,14 +5,14 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
     /// <summary>
     /// An attribute to denote that a property should be required by the persistence system
     /// </summary>
-    public class HasRequiredAttribute : MappingAttribute
+    public sealed class HasRequiredAttribute : MappingAttribute
     {
         /// <summary>
         /// Constructs a new instance of this attribute
         /// </summary>
         public HasRequiredAttribute()
         {
-            this.SetMapping = new Mapping()
+            SetMapping = new Mapping()
             {
             };
         }
@@ -23,7 +23,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         /// <param name="rightProperty">The optional name for the property that links back to this object</param>
         public HasRequiredAttribute(string rightProperty)
         {
-            this.SetMapping = new Mapping()
+            SetMapping = new Mapping()
             {
                 Right = new MappingEnd()
                 {
@@ -41,5 +41,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         {
             return LeftPropertyType;
         }
+
+        public string RightProperty { get; }
     }
 }

@@ -22,27 +22,27 @@ namespace Penguin.Persistence.Abstractions
         {
             get
             {
-                IQueryable<T> root = this.PrimaryDataSource;
+                IQueryable<T> root = PrimaryDataSource;
 
                 return root;
             }
         }
 
-        IQueryable ICrud.All => this.All;
+        IQueryable ICrud.All => All;
 
         /// <summary>
         /// This returns the core type of the underlying IQueriable
         /// </summary>
-        public Type ElementType => this.All.ElementType;
+        public Type ElementType => All.ElementType;
 
         Type IQueryable.ElementType => throw new NotImplementedException();
 
         /// <summary>
         /// This returns the Expression of the underlying IQueriable
         /// </summary>
-        public virtual Expression Expression => this.All.Expression;
+        public virtual Expression Expression => All.Expression;
 
-        Expression IQueryable.Expression => this.All.Expression;
+        Expression IQueryable.Expression => All.Expression;
 
         /// <summary>
         /// This should return a true if the object used to construct this persistence context has an associated data store (ex DbSet)
@@ -52,7 +52,7 @@ namespace Penguin.Persistence.Abstractions
         /// <summary>
         /// This returns the Provider of the underlying IQueriable
         /// </summary>
-        public IQueryProvider Provider => this.All.Provider;
+        public IQueryProvider Provider => All.Provider;
 
         /// <summary>
         /// This should contain any additional sources for objects that are READ ONLY (ex caches)
@@ -74,11 +74,11 @@ namespace Penguin.Persistence.Abstractions
         /// </summary>
         /// <param name="t">The type of entity being stored by this context</param>
         /// <param name="dataSource">The IQueriable being used to retrieve instances of this object</param>
-        public PersistenceContext(Type t, IQueryable<T> dataSource)
+        protected PersistenceContext(Type t, IQueryable<T> dataSource)
         {
-            this.PrimaryDataSource = dataSource;
+            PrimaryDataSource = dataSource;
 
-            this.BaseType = t;
+            BaseType = t;
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Penguin.Persistence.Abstractions
 
         void ICrud.Add(object o)
         {
-            this.Add((T)o);
+            Add((T)o);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Penguin.Persistence.Abstractions
 
         void ICrud.AddOrUpdate(object o)
         {
-            this.AddOrUpdate((T)o);
+            AddOrUpdate((T)o);
         }
 
         /// <summary>
@@ -116,13 +116,13 @@ namespace Penguin.Persistence.Abstractions
 
             foreach (T io in o)
             {
-                this.AddOrUpdate(io);
+                AddOrUpdate(io);
             }
         }
 
         void ICrud.AddOrUpdateRange(IEnumerable o)
         {
-            this.AddOrUpdateRange(o.Cast<T>());
+            AddOrUpdateRange(o.Cast<T>());
         }
 
         /// <summary>
@@ -138,13 +138,13 @@ namespace Penguin.Persistence.Abstractions
 
             foreach (T io in o)
             {
-                this.Add(io);
+                Add(io);
             }
         }
 
         void ICrud.AddRange(IEnumerable o)
         {
-            this.AddRange(o.Cast<T>());
+            AddRange(o.Cast<T>());
         }
 
         /// <summary>
@@ -161,14 +161,14 @@ namespace Penguin.Persistence.Abstractions
         /// <summary>
         /// If all WriteContexts have been deregistered, this should persist any changes to the underlying data store
         /// </summary>
-        /// <param name="context">The IWriteContext that has finished making changes</param>
-        public abstract void Commit(IWriteContext context);
+        /// <param name="writeContext">The IWriteContext that has finished making changes</param>
+        public abstract void Commit(IWriteContext writeContext);
 
         /// <summary>
         /// If all WriteContexts have been deregistered, this should persist any changes to the underlying data store in an ASYNC manner
         /// </summary>
-        /// <param name="context">The IWriteContext that has finished making changes</param>
-        public abstract Task CommitASync(IWriteContext context);
+        /// <param name="writeContext">The IWriteContext that has finished making changes</param>
+        public abstract Task CommitASync(IWriteContext writeContext);
 
         /// <summary>
         /// This should remove objects from the underlying data store, or make them inaccessible (if deleting is not prefered)
@@ -178,7 +178,7 @@ namespace Penguin.Persistence.Abstractions
 
         void ICrud.Delete(object o)
         {
-            this.Delete((T)o);
+            Delete((T)o);
         }
 
         /// <summary>
@@ -194,13 +194,13 @@ namespace Penguin.Persistence.Abstractions
 
             foreach (T io in o)
             {
-                this.Delete(io);
+                Delete(io);
             }
         }
 
         void ICrud.DeleteRange(IEnumerable o)
         {
-            this.DeleteRange(o.Cast<T>());
+            DeleteRange(o.Cast<T>());
         }
 
         /// <summary>
@@ -217,7 +217,7 @@ namespace Penguin.Persistence.Abstractions
 
         object ICrud.Find(object Key)
         {
-            return this.Find(Key);
+            return Find(Key);
         }
 
         /// <summary>
@@ -232,13 +232,13 @@ namespace Penguin.Persistence.Abstractions
 
             foreach (T io in Keys)
             {
-                yield return this.Find(io);
+                yield return Find(io);
             }
         }
 
         IEnumerable ICrud.FindRange(IEnumerable Key)
         {
-            return this.FindRange(Key);
+            return FindRange(Key);
         }
 
         /// <summary>
@@ -247,12 +247,12 @@ namespace Penguin.Persistence.Abstractions
         /// <returns>The Enumerator for the underlying IQueriable</returns>
         public IEnumerator<T> GetEnumerator()
         {
-            return this.All.GetEnumerator();
+            return All.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return this.All.GetEnumerator();
+            return All.GetEnumerator();
         }
 
         /// <summary>
@@ -276,7 +276,7 @@ namespace Penguin.Persistence.Abstractions
 
         void ICrud.Update(object o)
         {
-            this.Update((T)o);
+            Update((T)o);
         }
 
         /// <summary>
@@ -292,13 +292,13 @@ namespace Penguin.Persistence.Abstractions
 
             foreach (T io in o)
             {
-                this.Update(io);
+                Update(io);
             }
         }
 
         void ICrud.UpdateRange(IEnumerable o)
         {
-            this.UpdateRange(o.Cast<T>());
+            UpdateRange(o.Cast<T>());
         }
 
         /// <summary>

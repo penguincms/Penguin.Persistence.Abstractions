@@ -19,7 +19,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Control
         /// <param name="context">The display context(s) that this property should be hidden from</param>
         public DontAllowAttribute(DisplayContexts context)
         {
-            this.Context = context;
+            Context = context;
         }
     }
 }

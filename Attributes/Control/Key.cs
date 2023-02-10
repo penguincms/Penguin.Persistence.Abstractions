@@ -3,7 +3,7 @@
     /// <summary>
     /// Used to identify the primary key for the object for use in database persistence
     /// </summary>
-    public class KeyAttribute : PersistenceAttribute
+    public sealed class KeyAttribute : PersistenceAttribute
     {
     }
 }

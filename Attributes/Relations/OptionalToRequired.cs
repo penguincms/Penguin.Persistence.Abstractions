@@ -6,14 +6,14 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
     /// Specifies that the property this applies to is optional, however the property linking back to this must
     /// be set
     /// </summary>
-    public class OptionalToRequiredAttribute : MappingAttribute
+    public sealed class OptionalToRequiredAttribute : MappingAttribute
     {
         /// <summary>
         /// Constructs a new instance of this attribute
         /// </summary>
         public OptionalToRequiredAttribute()
         {
-            this.SetMapping = new Mapping()
+            SetMapping = new Mapping()
             {
             };
         }
@@ -24,7 +24,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         /// <param name="rightProperty">The optional name for the property that links back to this object</param>
         public OptionalToRequiredAttribute(string rightProperty)
         {
-            this.SetMapping = new Mapping()
+            SetMapping = new Mapping()
             {
                 Right = new MappingEnd()
                 {
@@ -42,5 +42,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         {
             return LeftPropertyType;
         }
+
+        public string RightProperty { get; }
     }
 }

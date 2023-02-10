@@ -3,12 +3,12 @@
     /// <summary>
     /// Specifies the max length of a property when persisted
     /// </summary>
-    public class MaxLengthAttribute : PersistenceAttribute
+    public sealed class MaxLengthAttribute : PersistenceAttribute
     {
         /// <summary>
         /// The max length of the property
         /// </summary>
-        public int Length { get; set; }
+        public int Length { get; internal set; }
 
         /// <summary>
         /// Constructs a new instance of this attribute
@@ -16,7 +16,7 @@
         /// <param name="length">The max length of the property</param>
         public MaxLengthAttribute(int length)
         {
-            this.Length = length;
+            Length = length;
         }
 
         /// <summary>
@@ -24,7 +24,7 @@
         /// </summary>
         public MaxLengthAttribute()
         {
-            this.Length = int.MaxValue;
+            Length = int.MaxValue;
         }
     }
 }

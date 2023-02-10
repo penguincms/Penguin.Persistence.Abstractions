@@ -34,13 +34,13 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         /// </summary>
         public Mapping()
         {
-            this.Left = new MappingEnd
+            Left = new MappingEnd
             {
                 //Left property should always be found since its where the attribute is declared
                 PropertyFound = true
             };
 
-            this.Right = new MappingEnd();
+            Right = new MappingEnd();
         }
     }
 
@@ -58,6 +58,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
         /// Gets the mapping data for this relationship by attempting to fill in any undefined values
         /// </summary>
         /// <param name="leftProperty">The property on the defined end of the relationship</param>
+        /// <param name="rightPropertyRequirement"></param>
         /// <returns>The filled in mapping data that may contain assumed definitions if there were unspecified properties</returns>
         public Mapping GetMapping(PropertyInfo leftProperty, RightPropertyRequirement rightPropertyRequirement = RightPropertyRequirement.Single)
         {
@@ -66,20 +67,20 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
                 throw new ArgumentNullException(nameof(leftProperty));
             }
 
-            Mapping mapping = new Mapping();
+            Mapping mapping = new();
 
-            mapping.Left.Type = this.SetMapping.Left.Type ?? leftProperty.ReflectedType;
+            mapping.Left.Type = SetMapping.Left.Type ?? leftProperty.ReflectedType;
 
-            mapping.Right.Type = this.SetMapping.Right.Type ?? leftProperty.PropertyType;
+            mapping.Right.Type = SetMapping.Right.Type ?? leftProperty.PropertyType;
 
             if (typeof(ICollection).IsAssignableFrom(mapping.Right.Type))
             {
                 mapping.Right.Type = mapping.Right.Type.GetGenericArguments()[0];
             }
 
-            if (this.SetMapping.Right.Property is null)
+            if (SetMapping.Right.Property is null)
             {
-                Type searchType = this.GetRightPropertyType(leftProperty.ReflectedType);
+                Type searchType = GetRightPropertyType(leftProperty.ReflectedType);
 
                 List<PropertyInfo> rightProperties = mapping.Right.Type.GetProperties()
                                                                        .Where(p => CheckPropertyAssignment(p, searchType))
@@ -107,23 +108,23 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
 
                         if (p != null)
                         {
-                            this.SetMapping.Right.PropertyFound = true;
-                            this.SetMapping.Right.Property = p.Name;
+                            SetMapping.Right.PropertyFound = true;
+                            SetMapping.Right.Property = p.Name;
                         }
                     }
                 }
             }
 
-            mapping.Right.Property = this.SetMapping.Right.Property;
-            mapping.Right.PropertyFound = this.SetMapping.Right.PropertyFound;
+            mapping.Right.Property = SetMapping.Right.Property;
+            mapping.Right.PropertyFound = SetMapping.Right.PropertyFound;
             mapping.Left.Property = leftProperty.Name;
 
-            mapping.Left.Key = this.SetMapping.Left.Key ?? GetKey(mapping.Left.Type);
-            mapping.Right.Key = this.SetMapping.Right.Key ?? GetKey(mapping.Right.Type);
+            mapping.Left.Key = SetMapping.Left.Key ?? GetKey(mapping.Left.Type);
+            mapping.Right.Key = SetMapping.Right.Key ?? GetKey(mapping.Right.Type);
 
             if (mapping.Right.PropertyFound)
             {
-                mapping.TableName = this.SetMapping.TableName ?? $"{mapping.Left.Type.Name}{mapping.Right.Type.Name}";
+                mapping.TableName = SetMapping.TableName ?? $"{mapping.Left.Type.Name}{mapping.Right.Type.Name}";
             }
 
             return mapping;
@@ -151,14 +152,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
 
             PropertyInfo leftKey = type.GetProperties().FirstOrDefault(p => p.GetCustomAttribute<KeyAttribute>() != null);
 
-            if (leftKey != null)
-            {
-                return $"{type.Name}{leftKey.Name}";
-            }
-            else
-            {
-                return $"{type.Name}";
-            }
+            return leftKey != null ? $"{type.Name}{leftKey.Name}" : $"{type.Name}";
         }
 
         /// <summary>
@@ -175,14 +169,7 @@ namespace Penguin.Persistence.Abstractions.Attributes.Relations
 
             PropertyInfo leftKey = type.GetProperties().FirstOrDefault(p => p.GetCustomAttribute<KeyAttribute>() != null);
 
-            if (leftKey != null)
-            {
-                return leftKey.ReflectedType;
-            }
-            else
-            {
-                return null;
-            }
+            return leftKey?.ReflectedType;
         }
 
         private static bool CheckPropertyAssignment(PropertyInfo toCheck, Type target)
